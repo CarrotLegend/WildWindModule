@@ -20,7 +20,7 @@ All notable changes to the Wild Wind Module project will be documented in this f
 - `wilderness`、`barren` 在 `neoforge.mods.toml` 中以 `type="required"`、`ordering="AFTER"` 依赖 `ww_core`，Gradle 侧用 `implementation project(":core")`。
 - 共享组件留在 core：`WoodFamily` / `ModWoodFamilies`（仅杜鹃木）、`WindupAttackMob` 与 AI goal、制箭台菜单与方块实体。
 - 每个模块各自拥有 `mixins.json`、访问转换器、datagen 入口与 `assets/data` 命名空间（`ww_core` / `ww_wilderness` / `ww_barren`），原 `ww_hfas` 资源已按归属重新分配。
-- 创造模式物品栏：core 提供 `wild_wind` 标签页，三个模块分别向原版标签页追加自己的条目。
+- 创造模式物品栏不再共用一个标签页：core 提供 `ww_core:wild_wind`（图标杜鹃木原木），wilderness 提供 `ww_wilderness:wilderness`（图标灵魂南瓜灯），barren 提供 `ww_barren:barren`（图标焚烬木原木）；三者同时安装时并列显示。
 
 ---
 
@@ -40,11 +40,11 @@ All notable changes to the Wild Wind Module project will be documented in this f
 - **GUI系统** - 自定义制箭台带有交互界面（3个输入槽位）
 
 #### 2. 木质方块套件
-| 木材类型         | 方块数量 | 特点        |
+| 木材类型| 方块数量 | 特点|
 |--------------|------|-----------|
-| 焚烬木 (Blaze)  | 16种  | 橙色调，下界风格  |
-| 灵焰木 (Soul)   | 16种  | 青色调，灵魂主题  |
-| 杜鹃木 (Azalea) | 13种  | 浅绿色调，繁茂洞穴 |
+| 焚烬木 (Blaze)| 16种| 橙色调，下界风格|
+| 灵焰木 (Soul)| 16种| 青色调，灵魂主题|
+| 杜鹃木 (Azalea) | 13种| 浅绿色调，繁茂洞穴 |
 
 每种套件包含：原木、木头、去皮原木、去皮木头、木板、楼梯、台阶、栅栏、栅栏门、门、活板门、压力板、按钮、树叶、树苗
 
@@ -66,87 +66,87 @@ All notable changes to the Wild Wind Module project will be documented in this f
 ### 技术实现
 
 #### 数据生成
-| 提供器                    | 功能           |
+| 提供器| 功能|
 |------------------------|--------------|
-| `HFASDatagen`          | 数据生成入口       |
-| `ModModelProvider`     | 模型生成（支持染色树叶） |
-| `ModBlockTagsProvider` | 方块标签生成       |
-| `ModItemTagsProvider`  | 物品标签生成       |
-| `ModLootProvider`      | 战利品表生成       |
-| `ModDatapackProvider`  | 数据包提供器       |
-| `ModDataMapsProvider`  | 数据映射提供器      |
-| `EnUsLanguageProvider` | 英文语言文件       |
-| `ZhCnLanguageProvider` | 中文语言文件       |
+| `HFASDatagen`         | 数据生成入口|
+| `ModModelProvider`    | 模型生成（支持染色树叶） |
+| `ModBlockTagsProvider`| 方块标签生成|
+| `ModItemTagsProvider` | 物品标签生成|
+| `ModLootProvider`     | 战利品表生成|
+| `ModDatapackProvider` | 数据包提供器|
+| `ModDataMapsProvider` | 数据映射提供器|
+| `EnUsLanguageProvider`| 英文语言文件|
+| `ZhCnLanguageProvider`| 中文语言文件|
 
 #### 世界生成系统
-| 类                       | 功能         |
-|-------------------------|------------|
-| `ModConfiguredFeatures` | 配置特征（树木结构） |
-| `ModPlacedFeatures`     | 放置特征       |
-| `ModBiomeModifiers`     | 生物群系修改器    |
-| `ModTreeGrowers`        | 树苗生长器      |
+| 类| 功能|
+|---------------------------|------------|
+| `ModConfiguredFeatures`   | 配置特征（树木结构） |
+| `ModPlacedFeatures`       | 放置特征|
+| `ModBiomeModifiers`       | 生物群系修改器|
+| `ModTreeGrowers`          | 树苗生长器|
 
 #### 事件处理
-| 类                              | 功能         |
+| 类| 功能|
 |--------------------------------|------------|
 | `FletchingTableReplaceHandler` | 区块加载时替换制箭台 |
-| `BlockFeaturesHandler`         | 方块功能（堆肥等）  |
+| `BlockFeaturesHandler`         | 方块功能（堆肥等）|
 
 #### Mixin 注入
-| 类                  | 功能        |
+| 类| 功能|
 |--------------------|-----------|
 | `AzaleaBlockMixin` | 修改杜鹃花催熟行为 |
 
 #### 自定义类型
-| 类型             | 用途                     |
+| 类型| 用途|
 |----------------|------------------------|
 | `BlockSetType` | 焚烬木、灵焰木、杜鹃木的门/活板门/按钮类型 |
-| `WoodType`     | 对应木材类型                 |
-| `TreeGrower`   | 自定义树木生长逻辑              |
+| `WoodType`     | 对应木材类型|
+| `TreeGrower`   | 自定义树木生长逻辑|
 
 ### 文件结构
 ```
 src/hfas/java/org/polaris2023/wildwind/hfas/
-├── block/                    # 方块注册
-│   ├── ModBlocks.java       # 方块定义
-│   ├── FletchingTableBlock.java
-│   └── entity/              # 方块实体
-│       └── FletchingTableBlockEntity.java
-├── worldgen/                 # 世界生成
-│   ├── ModConfiguredFeatures.java
-│   ├── ModPlacedFeatures.java
-│   ├── ModBiomeModifiers.java
-│   └── ModTreeGrowers.java
-├── datagen/                  # 数据生成
-│   ├── HFASDatagen.java
-│   └── provider/
-│       ├── loot/             # 实体掉落
-│       ├── lang/             # 语言系统
-│       ├── tag/              # Tag标签
-│       ├── ModModelProvider.java
-│       ├── ModLootProvider.java
-│       ├── ModDatapackProvider.java
-│       ├── ModDataMapsProvider.java
-├── event/                    # 事件处理
-│   ├── FletchingTableReplaceHandler.java
-│   └── BlockFeaturesHandler.java
-├── mixin/                    # Mixin 注入
-│   └── AzaleaBlockMixin.java
-├── config/                   # 配置文件
-│   └── ModCommonConfig.java
-├── menu/                     # GUI 菜单
-│   └── FletchingTableMenu.java
-└── groups/                   # 创造模式物品栏
-    └── ModCreativeTabs.java
+├── block/# 方块注册
+│├── ModBlocks.java# 方块定义
+│├── FletchingTableBlock.java
+│└── entity/# 方块实体
+│└── FletchingTableBlockEntity.java
+├── worldgen/# 世界生成
+│├── ModConfiguredFeatures.java
+│├── ModPlacedFeatures.java
+│├── ModBiomeModifiers.java
+│└── ModTreeGrowers.java
+├── datagen/# 数据生成
+│├── HFASDatagen.java
+│└── provider/
+│├── loot/# 实体掉落
+│├── lang/# 语言系统
+│├── tag/# Tag标签
+│├── ModModelProvider.java
+│├── ModLootProvider.java
+│├── ModDatapackProvider.java
+│├── ModDataMapsProvider.java
+├── event/# 事件处理
+│├── FletchingTableReplaceHandler.java
+│└── BlockFeaturesHandler.java
+├── mixin/# Mixin 注入
+│└── AzaleaBlockMixin.java
+├── config/# 配置文件
+│└── ModCommonConfig.java
+├── menu/# GUI 菜单
+│└── FletchingTableMenu.java
+└── groups/# 创造模式物品栏
+└── ModCreativeTabs.java
 ```
 
 ### 生成资源统计
-| 类型   | 数量                        |
-|------|---------------------------|
-| 方块模型 | 118+                      |
-| 物品模型 | 60+                       |
-| 方块状态 | 45+                       |
-| 战利品表 | 45+                       |
+| 类型| 数量|
+|---------|---------------------------|
+| 方块模型 | 118+|
+| 物品模型 | 60+|
+| 方块状态 | 45+|
+| 战利品表 | 45+|
 | 语言条目 | 90+ (en_us) / 90+ (zh_cn) |
 
 ---
@@ -295,5 +295,32 @@ src/hfas/java/org/polaris2023/wildwind/hfas/
 
 ### Fixed
 - **中文名用词** - `nitrified_red_sandstone` 由「硝化红色砂岩」改为「硝化红砂岩」；`suspicious_quartz_sand` / `suspicious_soul_sand` 由「可疑的…沙子」改为「可疑的…沙」
+
+---
+
+## [Unreleased] - 2026.11.02
+
+### Added
+- **三个独立创造标签页** - 拆分后每个模块各注册一页，不再挤在 core 的标签页里：`ww_core:wild_wind`（`tab.ww_core.name`，图标杜鹃木原木）、`ww_wilderness:wilderness`（`tab.ww_wilderness.name`，图标灵魂南瓜灯）、`ww_barren:barren`（`tab.ww_barren.name`，图标焚烬木原木）；三 jar 共存时三页并列，只装某一个时也只出现它自己那页
+- **各模块向原版栏追加条目** - core（`groups/ModCreativeTabs`）：建筑方块（杜鹃木套件、玫瑰系列）与自然方块；wilderness（`groups/WildernessCreativeTabs`）：自然方块（灵魂南瓜灯）与工具与实用（蟹类桶、万用蟹钳）、食物与饮品、材料；barren（`groups/BarrenCreativeTabs`）：建筑方块与自然方块（焚烬木 / 灵焰木套件、流沙、石英沙、小型仙人球）
+- **制箭台物品形态** - `ModBlocks` 用 `ITEMS.registerSimpleBlockItem(FLETCHING_TABLE)` 注册，方块进入创造栏并可放置
+- **制箭台交互** - `FletchingTableBlock` 实现 `EntityBlock`，`useWithoutItem` 打开菜单；`getMenuProvider` 传入方块实体自身作为 `Container` 并带 `ContainerLevelAccess.create(level, pos)`
+- **方块实体与结算** - `FletchingTableBlockEntity` 实现 `Container`（4 槽：箭羽 / 箭杆 / 箭头 / 产物，枚举 `Slots`），三格齐备且材料合法时 `updateResult` 生成 `ARROWS_PER_CRAFT = 4` 支箭，`consumeInputs` 在取走产物后各扣 1 并重算；数据用 `ValueOutput` / `ValueInput` 存档
+- **制箭台菜单** - `FletchingTableMenu`：三个输入槽用 `FilteredSlot` 按 `ArrowFletching` / `ArrowShaft` / `ArrowHead.fromItem` 过滤，产物槽 `ResultSlot` 只取不放；槽位坐标沿用锻造台布局（(8,48)/(26,48)/(44,48)、产物 (98,48)、背包 (8,84) 起），`quickMoveStack` 以 `INV_START = CONTAINER_SIZE` 为界
+- **客户端界面** - `CoreClientScreens` 监听 `RegisterMenuScreensEvent` 注册 `FletchingTableScreen`；界面直接引用原版 `minecraft:textures/gui/container/smithing.png`（不复制进 jar，避免再分发 Mojang 资源）
+- **枚举名反序列化** - `ArrowFletching` / `ArrowShaft` / `ArrowHead` 新增 `fromName(String)`，`ArrowComponent` 的 `CODEC` / `STREAM_CODEC` 改用它
+
+### Changed
+- **原版制箭台放置替换** - 26.2 的 `BlockItem#place` 不再触发 `BlockEvent.EntityPlaceEvent`，改为 `BlockItemMixin` 在 `getPlacementState` 中用 `@ModifyExpressionValue` 把 `Blocks.FLETCHING_TABLE` 换成模组方块：放置校验、音效、消耗物品、方块实体创建仍走原版流程；`FletchingTableReplaceHandler` 只保留区块加载时替换旧世界方块
+- **菜单连接真实容器** - 此前 `getMenuProvider` 用 `SimpleContainer`，界面与方块实体数据不同步（放进去的材料会没、产物不结算），改为传方块实体本身
+- **制箭台界面标题** - `container.fletching_table` 由「制箭台 / Fletching Table」改为「制作箭 / Arrow Crafting」，与方块名区分；方块名仍为「制箭台 / Fletching Table」，不受影响
+- **界面图标尺寸** - 左上角光灵箭图标由 16×16 放大到 24×24，居中于被遮盖的原版锤子区域（`ICON_SIZE` 常量控制），锤子仍被完全遮挡
+
+### Fixed
+- **制箭台无法获取与放置** - 方块缺少物品形态，创造栏里没有条目、也无法放下，已补 `registerSimpleBlockItem`
+- **放下后变回原版制箭台 / 放下即消失** - 原先靠 `RightClickBlock` 事件延迟替换，存在回滚与进度统计问题，改为 mixin 直换 `getBlock()` 后一次性生成正确方块
+- **槽位索引错乱** - `FletchingTableMenu` 构造时 `addSlot(this.addSlot(...))` 把玩家背包槽位重复登记，且容器尺寸与槽位布局不匹配；已按 4 槽容器 + 36 格背包重排
+- **网络包解码失败导致打开界面崩溃** - `Failed to decode packet 'clientbound/minecraft:container_set_slot'`：`ArrowComponent` 的 `STREAM_CODEC` 用 `valueOf("feather")` 反序列化，而枚举常量为大写，抛 `IllegalArgumentException`；改走 `fromName` 后正常
+- **打开界面无内容（白屏/原版界面）** - 未注册 `MenuScreen`，`MenuScreens` 拿不到构造器；补 `CoreClientScreens` 注册
 
 

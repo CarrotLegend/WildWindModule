@@ -3,7 +3,6 @@ package org.polaris2023.wildwind.core.datagen.provider.loot;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.loot.BlockLootSubProvider;
 import net.minecraft.world.flag.FeatureFlags;
-import net.minecraft.world.item.Items;
 import net.minecraft.world.level.block.Block;
 import org.jspecify.annotations.NonNull;
 import org.polaris2023.wildwind.core.block.ModBlocks;
@@ -32,7 +31,7 @@ public class BlockLoot extends BlockLootSubProvider {
             generateWood(family);
         }
 
-        dropOther(ModBlocks.FLETCHING_TABLE.get(), Items.FLETCHING_TABLE);
+        dropSelf(ModBlocks.FLETCHING_TABLE.get());
         dropSelf(ModBlocks.ROSE.get());
         dropSelf(ModBlocks.SOUL_ROSE.get());
         dropSelf(ModBlocks.SOUL_ROSE_BUSH.get());

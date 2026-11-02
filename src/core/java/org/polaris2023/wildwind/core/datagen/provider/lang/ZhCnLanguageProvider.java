@@ -4,6 +4,8 @@ import net.minecraft.data.PackOutput;
 import net.neoforged.neoforge.common.data.LanguageProvider;
 import org.polaris2023.wildwind.core.WildWindCore;
 import org.polaris2023.wildwind.core.block.ModBlocks;
+import org.polaris2023.wildwind.core.registry.ModEntities;
+import org.polaris2023.wildwind.core.registry.ModItems;
 
 /**
  * 核心模块的简体中文语言文件。
@@ -38,7 +40,12 @@ public class ZhCnLanguageProvider extends LanguageProvider {
         addBlock(ModBlocks.SOUL_ROSE_BUSH, "灵魂玫瑰丛");
 
         // GUI
-        add("container.fletching_table", "制箭台");
+        add("container.fletching_table", "制作箭");
+        add("tab.ww_core.name", "原野之风");
+
+        // 幼蛛
+        addItem(ModItems.SPIDERLING_SPAWN_EGG, "幼蛛刷怪蛋");
+        addEntityType(ModEntities.SPIDERLING, "幼蛛");
 
         // 幼蛛音效字幕
         add("subtitles.entity.spiderling.ambient", "幼蛛：嘶嘶");

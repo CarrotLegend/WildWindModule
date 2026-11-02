@@ -100,4 +100,16 @@ public enum ArrowShaft {
         }
         return null;
     }
+
+    /**
+     * 根据序列化用的 name（小写）反查类型。
+     */
+    public static ArrowShaft fromName(String name) {
+        for (ArrowShaft shaft : values()) {
+            if (shaft.getName().equals(name)) {
+                return shaft;
+            }
+        }
+        throw new IllegalArgumentException("Unknown arrow shaft: " + name);
+    }
 }

@@ -104,4 +104,16 @@ public enum ArrowHead {
         }
         return null;
     }
+
+    /**
+     * 根据序列化用的 name（小写）反查类型。
+     */
+    public static ArrowHead fromName(String name) {
+        for (ArrowHead head : values()) {
+            if (head.getName().equals(name)) {
+                return head;
+            }
+        }
+        throw new IllegalArgumentException("Unknown arrow head: " + name);
+    }
 }

@@ -49,7 +49,7 @@ public class BarrenModelProvider extends ModelProvider {
         blockModels.createPlant(BarrenBlocks.SOUL_SAPLING.get(), BarrenBlocks.POTTED_SOUL_SAPLING.get(), BlockModelGenerators.PlantType.NOT_TINTED);
 
         // 焦土
-        blockModels.createTrivialCube(BarrenBlocks.SCORCHED_GRASS_BLOCK.get());
+        createGrassBlock(blockModels, BarrenBlocks.SCORCHED_GRASS_BLOCK.get());
         blockModels.createTrivialCube(BarrenBlocks.SCORCHED_DIRT.get());
         blockModels.createCrossBlock(BarrenBlocks.SCORCHED_GRASS.get(), BlockModelGenerators.PlantType.NOT_TINTED);
         blockModels.createCrossBlock(BarrenBlocks.SCORCHED_TWIG.get(), BlockModelGenerators.PlantType.NOT_TINTED);
@@ -104,8 +104,20 @@ public class BarrenModelProvider extends ModelProvider {
         }
     }
 
-    private void createSandstone(BlockModelGenerators blockModels, Block block) {
+    /**
+     * 草方块式模型：侧面 scorched_grass_block_side，顶面 _top，底面使用焦土贴图。
+     */
+    private void createGrassBlock(BlockModelGenerators blockModels, Block block) {
         TextureMapping mapping = new TextureMapping()
+                .put(TextureSlot.SIDE, TextureMapping.getBlockTexture(block, "_side"))
+                .put(TextureSlot.TOP, TextureMapping.getBlockTexture(block, "_top"))
+                .put(TextureSlot.BOTTOM, TextureMapping.getBlockTexture(BarrenBlocks.SCORCHED_DIRT.get()));
+        Identifier model = ModelTemplates.CUBE_BOTTOM_TOP.create(block, mapping, blockModels.modelOutput);
+        blockModels.blockStateOutput.accept(BlockModelGenerators.createSimpleBlock(block, BlockModelGenerators.plainVariant(model)));
+        blockModels.registerSimpleItemModel(block.asItem(), model);
+    }
+
+    private void createSandstone(BlockModelGenerators blockModels, Block block) {        TextureMapping mapping = new TextureMapping()
                 .put(TextureSlot.BOTTOM, TextureMapping.getBlockTexture(block, "_bottom"))
                 .put(TextureSlot.TOP, TextureMapping.getBlockTexture(block, "_top"))
                 .put(TextureSlot.SIDE, TextureMapping.getBlockTexture(block))

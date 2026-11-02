@@ -16,6 +16,9 @@ public class BarrenZhCnLanguageProvider extends LanguageProvider {
 
     @Override
     protected void addTranslations() {
+        // 创造栏标题
+        add("tab.ww_barren.name", "瘠土更新");
+
         // 焚烬木套件
         addBlock(BarrenBlocks.BLAZE_LOG, "焚烬木原木");
         addBlock(BarrenBlocks.BLAZE_WOOD, "焚烬木");

@@ -4,6 +4,7 @@ import net.minecraft.resources.Identifier;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.fml.common.Mod;
 import org.polaris2023.wildwind.barren.block.BarrenBlocks;
+import org.polaris2023.wildwind.barren.registry.ModCreativeTabs;
 
 /**
  * 原野之风：瘠土更新（Wild Wind: Barren Update）
@@ -16,6 +17,7 @@ public class WildWindBarren {
 
     public WildWindBarren(IEventBus bus) {
         BarrenBlocks.register(bus);
+        ModCreativeTabs.register(bus);
     }
 
     public static Identifier id(String path) {

@@ -26,9 +26,9 @@ public record ArrowComponent(ArrowFletching fletching, ArrowShaft shaft, ArrowHe
 
     public static final Codec<ArrowComponent> CODEC = RecordCodecBuilder.create(instance ->
             instance.group(
-                    Codec.STRING.xmap(ArrowFletching::valueOf, ArrowFletching::getName).fieldOf("fletching").forGetter(ArrowComponent::fletching),
-                    Codec.STRING.xmap(ArrowShaft::valueOf, ArrowShaft::getName).fieldOf("shaft").forGetter(ArrowComponent::shaft),
-                    Codec.STRING.xmap(ArrowHead::valueOf, ArrowHead::getName).fieldOf("head").forGetter(ArrowComponent::head)
+                    Codec.STRING.xmap(ArrowFletching::fromName, ArrowFletching::getName).fieldOf("fletching").forGetter(ArrowComponent::fletching),
+                    Codec.STRING.xmap(ArrowShaft::fromName, ArrowShaft::getName).fieldOf("shaft").forGetter(ArrowComponent::shaft),
+                    Codec.STRING.xmap(ArrowHead::fromName, ArrowHead::getName).fieldOf("head").forGetter(ArrowComponent::head)
             ).apply(instance, ArrowComponent::new)
     );
 
@@ -39,9 +39,9 @@ public record ArrowComponent(ArrowFletching fletching, ArrowShaft shaft, ArrowHe
                 buf.writeUtf(component.head().getName());
             },
             buf -> new ArrowComponent(
-                    ArrowFletching.valueOf(buf.readUtf()),
-                    ArrowShaft.valueOf(buf.readUtf()),
-                    ArrowHead.valueOf(buf.readUtf())
+                    ArrowFletching.fromName(buf.readUtf()),
+                    ArrowShaft.fromName(buf.readUtf()),
+                    ArrowHead.fromName(buf.readUtf())
             )
     );
 

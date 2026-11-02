@@ -20,6 +20,9 @@ public class WildernessEnUsLanguageProvider extends LanguageProvider {
     protected void addTranslations() {
         addBlock(WildernessBlocks.SOUL_JACK_O_LANTERN, "§4Soul Jack o'Lantern");
 
+        // 创造栏标题
+        add("tab.ww_wilderness.name", "Wilderness Update");
+
         addItem(ModItems.MUDCRAB_SPAWN_EGG, "Mudcrab Spawn Egg");
         addItem(ModItems.MUDCRAB_BUCKET, "Bucket of Mudcrab");
         addItem(ModItems.CRAB_CLAW, "Crab Claw");

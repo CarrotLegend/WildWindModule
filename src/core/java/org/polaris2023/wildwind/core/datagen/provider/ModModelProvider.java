@@ -3,9 +3,12 @@ package org.polaris2023.wildwind.core.datagen.provider;
 import net.minecraft.client.data.models.BlockModelGenerators;
 import net.minecraft.client.data.models.ItemModelGenerators;
 import net.minecraft.client.data.models.ModelProvider;
+import net.minecraft.client.data.models.model.ModelLocationUtils;
 import net.minecraft.client.data.models.model.ModelTemplates;
 import net.minecraft.client.data.models.model.TexturedModel;
 import net.minecraft.data.PackOutput;
+import net.minecraft.resources.Identifier;
+import net.minecraft.world.level.block.Blocks;
 import org.polaris2023.wildwind.core.WildWindCore;
 import org.polaris2023.wildwind.core.block.ModBlocks;
 import org.polaris2023.wildwind.core.block.ModWoodFamilies;
@@ -27,7 +30,12 @@ public class ModModelProvider extends ModelProvider {
             registerWoodModels(blockModels, family);
         }
 
-        blockModels.createTrivialCube(ModBlocks.FLETCHING_TABLE.get());
+        // 制箭台：外观与方块模型均沿用原版，只多了 GUI
+        Identifier vanillaFletchingModel = ModelLocationUtils.getModelLocation(Blocks.FLETCHING_TABLE);
+        blockModels.blockStateOutput.accept(BlockModelGenerators.createSimpleBlock(
+                ModBlocks.FLETCHING_TABLE.get(),
+                BlockModelGenerators.plainVariant(vanillaFletchingModel)));
+        blockModels.registerSimpleItemModel(ModBlocks.FLETCHING_TABLE.get().asItem(), vanillaFletchingModel);
 
         blockModels.createCrossBlockWithDefaultItem(ModBlocks.ROSE.get(), BlockModelGenerators.PlantType.NOT_TINTED);
         blockModels.createCrossBlockWithDefaultItem(ModBlocks.SOUL_ROSE.get(), BlockModelGenerators.PlantType.NOT_TINTED);

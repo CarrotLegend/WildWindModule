@@ -20,6 +20,9 @@ public class WildernessZhCnLanguageProvider extends LanguageProvider {
     protected void addTranslations() {
         addBlock(WildernessBlocks.SOUL_JACK_O_LANTERN, "§4灵魂南瓜灯");
 
+        // 创造栏标题
+        add("tab.ww_wilderness.name", "荒野更新");
+
         addItem(ModItems.MUDCRAB_SPAWN_EGG, "泥沼蟹刷怪蛋");
         addItem(ModItems.MUDCRAB_BUCKET, "泥沼蟹桶");
         addItem(ModItems.CRAB_CLAW, "蟹钳");

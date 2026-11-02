@@ -59,4 +59,16 @@ public enum ArrowFletching {
         }
         return null;
     }
+
+    /**
+     * 根据序列化用的 name（小写）反查类型，{@code valueOf} 只认枚举常量名，不能拿来做反序列化。
+     */
+    public static ArrowFletching fromName(String name) {
+        for (ArrowFletching fletching : values()) {
+            if (fletching.getName().equals(name)) {
+                return fletching;
+            }
+        }
+        throw new IllegalArgumentException("Unknown arrow fletching: " + name);
+    }
 }

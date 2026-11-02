@@ -22,7 +22,7 @@ public final class ModCreativeTabs {
 
     public static final DeferredHolder<CreativeModeTab, CreativeModeTab> WILD_WIND =
             CREATIVE_TABS.register("wild_wind", () -> CreativeModeTab.builder()
-                    .title(Component.translatable("mod.wild_wind.name"))
+                    .title(Component.translatable("tab.ww_core.name"))
                     .icon(() -> ModBlocks.AZALEA_LOG.toStack())
                     .displayItems((params, output) -> addStacks(output))
                     .build()
@@ -38,6 +38,7 @@ public final class ModCreativeTabs {
         output.accept(ModBlocks.ROSE.get());
         output.accept(ModBlocks.SOUL_ROSE.get());
         output.accept(ModBlocks.SOUL_ROSE_BUSH.get());
+        output.accept(ModBlocks.FLETCHING_TABLE.get());
 
         output.accept(ModItems.SPIDERLING_SPAWN_EGG);
     }

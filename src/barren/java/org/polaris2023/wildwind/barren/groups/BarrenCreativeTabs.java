@@ -16,7 +16,7 @@ import org.polaris2023.wildwind.barren.block.BarrenWoodFamilies;
 import org.polaris2023.wildwind.core.block.WoodFamily;
 
 /**
- * 瘠土更新的物品栏排序：把焚烬木 / 灵焰木插进原版建筑与自然物品栏。
+ * 瘠土更新的原版物品栏排序（模组自己的页由 {@link org.polaris2023.wildwind.barren.registry.ModCreativeTabs} 注册）。
  */
 @EventBusSubscriber(modid = WildWindBarren.MOD_ID)
 public final class BarrenCreativeTabs {

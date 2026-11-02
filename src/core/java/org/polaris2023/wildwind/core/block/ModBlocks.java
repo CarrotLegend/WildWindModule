@@ -204,6 +204,7 @@ public final class ModBlocks {
         ITEMS.registerSimpleBlockItem(ROSE);
         ITEMS.registerSimpleBlockItem(SOUL_ROSE);
         ITEMS.registerSimpleBlockItem(SOUL_ROSE_BUSH);
+        ITEMS.registerSimpleBlockItem(FLETCHING_TABLE);
     }
 
     public static void register(IEventBus bus) {

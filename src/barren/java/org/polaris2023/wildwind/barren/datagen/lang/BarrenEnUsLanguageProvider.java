@@ -16,6 +16,9 @@ public class BarrenEnUsLanguageProvider extends LanguageProvider {
 
     @Override
     protected void addTranslations() {
+        // 创造栏标题
+        add("tab.ww_barren.name", "Barren Update");
+
         // 焚烬木套件
         addBlock(BarrenBlocks.BLAZE_LOG, "Blaze Log");
         addBlock(BarrenBlocks.BLAZE_WOOD, "Blaze Wood");

@@ -4,6 +4,8 @@ import net.minecraft.data.PackOutput;
 import net.neoforged.neoforge.common.data.LanguageProvider;
 import org.polaris2023.wildwind.core.WildWindCore;
 import org.polaris2023.wildwind.core.block.ModBlocks;
+import org.polaris2023.wildwind.core.registry.ModEntities;
+import org.polaris2023.wildwind.core.registry.ModItems;
 
 /**
  * 核心模块的英文语言文件。
@@ -38,7 +40,12 @@ public class EnUsLanguageProvider extends LanguageProvider {
         addBlock(ModBlocks.SOUL_ROSE_BUSH, "Soul Rose Bush");
 
         // GUI
-        add("container.fletching_table", "Fletching Table");
+        add("container.fletching_table", "Arrow Crafting");
+        add("tab.ww_core.name", "Wild Wind");
+
+        // 幼蛛
+        addItem(ModItems.SPIDERLING_SPAWN_EGG, "Spiderling Spawn Egg");
+        addEntityType(ModEntities.SPIDERLING, "Spiderling");
 
         // 幼蛛音效字幕
         add("subtitles.entity.spiderling.ambient", "Spiderling hisses");

@@ -192,6 +192,10 @@ allprojects {
         if (project.name != "core") {
             implementation(project(":core"))
         }
+        // 开发期联调：瘠土更新的 run 额外加载荒野更新；只在本地运行时生效，不进入发布 jar
+        if (project.name == "barren") {
+            add("localRuntime", project(":wilderness"))
+        }
     }
 
     tasks.withType<JavaCompile>().configureEach {

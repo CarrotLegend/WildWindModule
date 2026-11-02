@@ -10,6 +10,7 @@ import org.polaris2023.wildwind.wilderness.block.WildernessBlocks;
 import org.polaris2023.wildwind.wilderness.entity.animal.MudcrabVariant;
 import org.polaris2023.wildwind.wilderness.registry.DatadrivenRegistryKey;
 import org.polaris2023.wildwind.wilderness.registry.ModAttributes;
+import org.polaris2023.wildwind.wilderness.registry.ModCreativeTabs;
 import org.polaris2023.wildwind.wilderness.registry.ModDataComponents;
 import org.polaris2023.wildwind.wilderness.registry.ModEntities;
 import org.polaris2023.wildwind.wilderness.registry.ModEntityDataSerializers;
@@ -40,6 +41,7 @@ public class WildWindWilderness {
         ModEntityDataSerializers.register(bus);
         ModEntities.register(bus);
         ModItems.register(bus);
+        ModCreativeTabs.register(bus);
     }
 
     public static Identifier id(String path) {
