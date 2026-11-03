@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "building",
+  "group": "planks",
+  "ingredients": [
+    "#ww_barren:soul_logs"
+  ],
+  "result": {
+    "count": 4,
+    "id": "ww_barren:soul_planks"
+  }
+}

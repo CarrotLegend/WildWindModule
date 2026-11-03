@@ -1,0 +1,10 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "redstone",
+  "ingredients": [
+    "ww_barren:soul_planks"
+  ],
+  "result": {
+    "id": "ww_barren:soul_button"
+  }
+}

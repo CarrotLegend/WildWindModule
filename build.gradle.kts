@@ -34,6 +34,21 @@ allprojects {
     val modVersion: String by project
     val neoVersion: String by project
     if (project == rootProject) return@allprojects
+    // 原野之风三份内容的显示名
+    val moduleDisplayName: String = mapOf(
+        "core" to "Wild Wind: Core",
+        "wilderness" to "Wild Wind: Wilderness Update",
+        "barren" to "Wild Wind: Barren Update",
+    )[project.name] ?: modName
+    // 非核心模块必须依赖核心模块
+    val coreDependency: String = if (project.name == "core") "" else """
+[[dependencies.${projectModId}]]
+    modId="${rootProject.name}_core"
+    type="required"
+    versionRange="[${modVersion},)"
+    ordering="AFTER"
+    side="BOTH"
+""".trimIndent()
     group = modGroupId
     version = modVersion
     configure<BasePluginExtension> {
@@ -47,10 +62,11 @@ allprojects {
             "minecraft_version_range" to minecraftVersionRange,
             "neo_version" to neoVersion,
             "mod_id" to projectModId,
-            "mod_name" to modName,
+            "mod_name" to moduleDisplayName,
             "mod_license" to modLicense,
             "mod_version" to modVersion,
-            "geocklib_version" to geocklibVersion
+            "geocklib_version" to geocklibVersion,
+            "core_dependency" to coreDependency
         )
         inputs.properties(replaceProperties)
         expand(replaceProperties)
@@ -172,6 +188,14 @@ allprojects {
         compileOnly("org.projectlombok:lombok:1.18.44")
         annotationProcessor("org.projectlombok:lombok:1.18.44")
         implementation("com.geckolib:geckolib-neoforge-26.2:5.5.4")
+        // 荒野 / 瘠土更新都建立在核心之上
+        if (project.name != "core") {
+            implementation(project(":core"))
+        }
+        // 开发期联调：瘠土更新的 run 额外加载荒野更新；只在本地运行时生效，不进入发布 jar
+        if (project.name == "barren") {
+            add("localRuntime", project(":wilderness"))
+        }
     }
 
     tasks.withType<JavaCompile>().configureEach {

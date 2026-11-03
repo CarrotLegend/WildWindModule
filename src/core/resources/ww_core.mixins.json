@@ -1,0 +1,17 @@
+{
+  "required": true,
+  "package": "org.polaris2023.wildwind.core.mixin",
+  "compatibilityLevel": "JAVA_25",
+  "mixins": [
+    "AbstractArrowAccessor",
+    "AbstractArrowMixin",
+    "AzaleaBlockMixin",
+    "BlockItemMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  },
+  "overwrites": {
+    "requireAnnotations": true
+  }
+}

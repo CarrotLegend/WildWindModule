@@ -1,0 +1,25 @@
+{
+  "entity.piranha.attack": {
+    "subtitle": "subtitles.entity.piranha.attack",
+    "sounds": [
+      "ww_wilderness:entity_piranha_attack_1",
+      "ww_wilderness:entity_piranha_attack_2",
+      "ww_wilderness:entity_piranha_attack_3"
+    ]
+  },
+  "entity.piranha.death": {
+    "subtitle": "subtitles.entity.piranha.death",
+    "sounds": [
+      "ww_wilderness:entity_piranha_death"
+    ]
+  },
+  "entity.piranha.flop": {
+    "subtitle": "subtitles.entity.piranha.flop",
+    "sounds": [
+      {
+        "type": "event",
+        "name": "minecraft:entity.salmon.flop"
+      }
+    ]
+  }
+}

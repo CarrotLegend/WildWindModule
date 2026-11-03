@@ -1,0 +1,10 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "redstone",
+  "ingredients": [
+    "ww_barren:blaze_planks"
+  ],
+  "result": {
+    "id": "ww_barren:blaze_button"
+  }
+}

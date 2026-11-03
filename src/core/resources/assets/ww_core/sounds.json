@@ -1,0 +1,29 @@
+{
+  "entity.spiderling.ambient": {
+    "subtitle": "subtitles.entity.spiderling.ambient",
+    "sounds": [
+      {
+        "type": "event",
+        "name": "minecraft:entity.spider.ambient"
+      }
+    ]
+  },
+  "entity.spiderling.hurt": {
+    "subtitle": "subtitles.entity.spiderling.hurt",
+    "sounds": [
+      {
+        "type": "event",
+        "name": "minecraft:entity.spider.hurt"
+      }
+    ]
+  },
+  "entity.spiderling.death": {
+    "subtitle": "subtitles.entity.spiderling.death",
+    "sounds": [
+      {
+        "type": "event",
+        "name": "minecraft:entity.spider.death"
+      }
+    ]
+  }
+}

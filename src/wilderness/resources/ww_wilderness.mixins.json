@@ -1,0 +1,18 @@
+{
+  "required": true,
+  "package": "org.polaris2023.wildwind.wilderness.mixin",
+  "compatibilityLevel": "JAVA_25",
+  "mixins": [
+    "EnchantmentHelperMixin",
+    "ItemStackMixin",
+    "MobMixin",
+    "PlayerMixin",
+    "ServerPlayerGameModeMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  },
+  "overwrites": {
+    "requireAnnotations": true
+  }
+}

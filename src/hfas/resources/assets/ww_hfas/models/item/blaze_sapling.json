@@ -1,6 +1,0 @@
-{
-  "parent": "minecraft:item/generated",
-  "textures": {
-    "layer0": "ww_hfas:block/blaze_sapling"
-  }
-}

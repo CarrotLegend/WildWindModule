@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "redstone",
+  "key": {
+    "#": "ww_barren:blaze_planks"
+  },
+  "pattern": [
+    "##"
+  ],
+  "result": {
+    "id": "ww_barren:blaze_pressure_plate"
+  }
+}

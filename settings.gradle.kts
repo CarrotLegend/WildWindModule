@@ -8,7 +8,10 @@ plugins {
     id("org.gradle.toolchains.foojay-resolver-convention") version("1.0.0")
 }
 
-val let = listOf("hfas")
+// 0 = core（原野之风：核心）
+// 1 = wilderness（原野之风：荒野更新）
+// 2 = barren（原野之风：瘠土更新）
+val let = listOf("core", "wilderness", "barren")
 let.forEach {
     include(it)
 
