@@ -322,5 +322,27 @@ src/hfas/java/org/polaris2023/wildwind/hfas/
 - **槽位索引错乱** - `FletchingTableMenu` 构造时 `addSlot(this.addSlot(...))` 把玩家背包槽位重复登记，且容器尺寸与槽位布局不匹配；已按 4 槽容器 + 36 格背包重排
 - **网络包解码失败导致打开界面崩溃** - `Failed to decode packet 'clientbound/minecraft:container_set_slot'`：`ArrowComponent` 的 `STREAM_CODEC` 用 `valueOf("feather")` 反序列化，而枚举常量为大写，抛 `IllegalArgumentException`；改走 `fromName` 后正常
 - **打开界面无内容（白屏/原版界面）** - 未注册 `MenuScreen`，`MenuScreens` 拿不到构造器；补 `CoreClientScreens` 注册
+---
 
+## [Unreleased] - 2026.11.03
+
+### Added
+- **红色流沙** - barren 新增 `ww_barren:red_quicksand`：`BarrenBlocks.RED_QUICKSAND`（`MapColor.COLOR_ORANGE`、`strength(0.5F)`、`SoundType.SAND`，与 `quicksand` 同构），复用已有贴图 `ww_barren:block/red_quicksand`；`blockItems` 注册方块物品，`BarrenBlockLoot` 补 `dropSelf`，`BarrenModelProvider` 走 `createTrivialCube`，`BarrenBlockTagsProvider` 进 `mineable_with_shovel`，创造栏（模组页 + 原版自然方块页）紧随 `quicksand` 排列，`en_us` / `zh_cn` 为 `§4Red Quicksand` / `§4红流沙`
+- **矢术效果层** - 新增 `arrow/ArrowEffects` 与 `mixin/AbstractArrowMixin` / `mixin/AbstractArrowAccessor`（`ww_core.mixins.json` 已登记）。组件不用额外 attachment：箭矢实体自带的 `pickupItemStack` 原版就会存读档，飞行中直接读回 `ArrowComponent`，没有组件的普通箭全部走原版逻辑
+  - **箭羽**：出手速度倍率（`shoot` 的 power，幻翼膜 1.5×）、额外散布（`shoot` 的 uncertainty）
+  - **箭杆**：`getDefaultGravity` 重写重力（旋风棒 0、骨头 1.35×、竹子 0.7×）、烈焰棒逐 tick 火尾粒子 + 落点生成火焰、旋风棒落点风弹爆炸（不破坏方块）、竹子自动补 1 级穿透、骨头 +1 伤害
+  - **箭头**：火药爆炸（`ExplosionInteraction.NONE`，不破坏地形）、风弹爆炸、粘液球弹开命中目标、烈焰粉点燃 100 tick、岩浆膏点燃 + 弹开、紫颂果目标 ±8 随机传送、末影之眼与射手交换位置、煤炭在命中面外侧放火把、紫水晶破坏周围植物（`VegetationBlock`）与玻璃类（`SoundType.GLASS`）、海晶碎片 `getWaterInertia` 提到 1.0（无视流体重力）
+  - **不可回收**：`tryPickup` 对 `ArrowComponent.isNotRecoverable()` 成立的箭矢直接 `discard()`
+- **矢术提示框** - `client/CoreClientTooltips` 监听 `ItemTooltipEvent`，带组件的箭用灰色文字列出 `ArrowComponent.getFullDescription()` 的箭羽 / 箭杆 / 箭头说明
+
+### Changed
+- **箭杆槽材料：风弹 → 旋风棒** - `ArrowShaft.WIND_CHARGE` 改为 `ArrowShaft.BREEZE_ROD`（`breeze_rod`，`Items.BREEZE_ROD`，仍为无重力 + 落点风弹爆炸 + 不可回收），制箭台中间格（`SLOT_SHAFT`，slot 1）现在吃旋风棒；箭头槽（slot 2）仍为风弹，`ArrowHead.WIND_CHARGE` 保持原样
+- **骨头箭杆重力** - `ArrowShaft.BONE` 的 `gravityMultiplier` 由 `1.0F` 提到 `1.35F`，让「下坠快」在数据上真正成立（原值与木棍相同）
+- **清理过时 API** - `builtInRegistryHolder()`（core / barren 的 `DataMapsProvider`、`BlockTagsProvider`、`ItemTagsProvider` 共 6 处）改为 `BuiltInRegistries.BLOCK` / `ITEM` 的 `getResourceKey(...).orElseThrow()`；花盆的 `FlowerPotBlock(Block, Properties)`（已标 `@Deprecated`）改为 NeoForge 推荐的 `FlowerPotBlock(Supplier<FlowerPotBlock>, Supplier<? extends Block>, Properties)`，两处 `@SuppressWarnings("deprecation")` 一并删除。`-Xlint:deprecation` 全量重编译后 core / barren 均无警告，数据生成输出与改动前一致
+
+### Fixed
+- **旧存档箭杆读取崩溃** - `ArrowShaft.fromName` 对历史值 `wind_charge` 做兼容映射到 `BREEZE_ROD`，避免旧箭矢在加载时报 `Unknown arrow shaft: wind_charge`
+- **右键只拿到一半产物** - `FletchingTableMenu.ResultSlot` 覆写 `tryRemove`：原版「右键取半组」路径会按 `(count + 1) / 2` 从产物槽取走 2 支，而 `onTake` 仍按整份消耗材料。现在产物不可拆分，右键 / Q / 与光标同物品合并一律整份取走，光标放不下就一个都不取
+- **shift 只能合成一次** - `quickMoveStack` 在产物槽搬完后会走公共尾巴 `slot.set(ItemStack.EMPTY)`，把 `onTake → consumeInputs → updateResult` 刚重算好的产物清掉，而产物槽的 `setItem` 不再触发重算，于是产物永久为空。产物槽分支改为 `onTake` 后直接返回，不再动槽位
+- **关界面材料留在方块里** - `FletchingTableMenu` 补 `removed(Player)`，关闭界面时把三个输入槽的材料塞回玩家背包（放不下就丢地上）并清空方块实体，与工作台一致
 

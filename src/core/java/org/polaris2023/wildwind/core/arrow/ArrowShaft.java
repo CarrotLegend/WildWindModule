@@ -21,14 +21,14 @@ public enum ArrowShaft {
     BLAZE_ROD("blaze_rod", Items.BLAZE_ROD, 1.0F, 0.0F, 0.0F, true, false, "路径产生火焰粒子，落点生成火焰，不可回收"),
 
     /**
-     * 风弹 - 非流体环境无重力，落点风弹爆炸，不可回收
+     * 旋风棒 - 非流体环境无重力，落点风弹爆炸，不可回收
      */
-    WIND_CHARGE("wind_charge", Items.WIND_CHARGE, 1.0F, 0.0F, 0.0F, false, true, "非流体环境无重力，落点风弹爆炸，不可回收"),
+    BREEZE_ROD("breeze_rod", Items.BREEZE_ROD, 1.0F, 0.0F, 0.0F, false, true, "非流体环境无重力，落点风弹爆炸，不可回收"),
 
     /**
      * 骨头 - 下坠快，+1伤害，随机偏移大
      */
-    BONE("bone", Items.BONE, 1.0F, 1.0F, 0.15F, false, false, "下坠快，+1伤害，随机偏移大"),
+    BONE("bone", Items.BONE, 1.35F, 1.0F, 0.15F, false, false, "下坠快，+1伤害，随机偏移大"),
 
     /**
      * 竹子 - 下坠慢，穿透1个目标，准度高
@@ -105,8 +105,10 @@ public enum ArrowShaft {
      * 根据序列化用的 name（小写）反查类型。
      */
     public static ArrowShaft fromName(String name) {
+        // 旧存档把旋风棒箭杆写作 wind_charge，读取时迁到新常量，避免加载崩溃
+        String normalized = "wind_charge".equals(name) ? BREEZE_ROD.getName() : name;
         for (ArrowShaft shaft : values()) {
-            if (shaft.getName().equals(name)) {
+            if (shaft.getName().equals(normalized)) {
                 return shaft;
             }
         }

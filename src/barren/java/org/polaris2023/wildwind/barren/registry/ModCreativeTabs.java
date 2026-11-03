@@ -50,6 +50,7 @@ public final class ModCreativeTabs {
         // 沙 / 流沙
         output.accept(BarrenBlocks.QUARTZ_SAND.get());
         output.accept(BarrenBlocks.QUICKSAND.get());
+        output.accept(BarrenBlocks.RED_QUICKSAND.get());
         output.accept(BarrenBlocks.QUARTZ_QUICKSAND.get());
         output.accept(BarrenBlocks.SOUL_QUICKSAND.get());
 

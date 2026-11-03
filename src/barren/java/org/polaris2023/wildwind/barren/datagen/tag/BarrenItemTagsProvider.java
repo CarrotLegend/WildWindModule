@@ -1,11 +1,12 @@
 package org.polaris2023.wildwind.barren.datagen.tag;
 
-import net.minecraft.core.Holder;
 import net.minecraft.core.HolderLookup;
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.tags.TagsProvider;
 import net.minecraft.resources.Identifier;
+import net.minecraft.resources.ResourceKey;
 import net.minecraft.tags.BlockItemTags;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.tags.TagKey;
@@ -92,15 +93,18 @@ public class BarrenItemTagsProvider extends ItemTagsProvider {
                 family.strippedLog().get(), family.strippedWood().get());
     }
 
-    @SuppressWarnings("all")
-    public void addToTag(TagKey<Item> tag, Block... items) {
-        if (items.length == 0) return;
-        tag(tag).addAll(Arrays.stream(items).map(Block::asItem).map(Item::builtInRegistryHolder).map(Holder.Reference::getKey));
+    public void addToTag(TagKey<Item> tag, Block... blocks) {
+        if (blocks.length == 0) return;
+        tag(tag).addAll(Arrays.stream(blocks).map(Block::asItem).map(BarrenItemTagsProvider::itemKey));
     }
 
-    @SuppressWarnings("all")
     public void addToTag(TagKey<Item> tag, Item... items) {
         if (items.length == 0) return;
-        tag(tag).addAll(Arrays.stream(items).map(Item::builtInRegistryHolder).map(Holder.Reference::getKey));
+        tag(tag).addAll(Arrays.stream(items).map(BarrenItemTagsProvider::itemKey));
+    }
+
+    private static ResourceKey<Item> itemKey(Item item) {
+        return BuiltInRegistries.ITEM.getResourceKey(item)
+                .orElseThrow(() -> new IllegalStateException("未注册的物品: " + item));
     }
 }

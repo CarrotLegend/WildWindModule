@@ -62,6 +62,7 @@ public class BarrenZhCnLanguageProvider extends LanguageProvider {
         addBlock(BarrenBlocks.SCORCHED_TWIG, "焦灰枝条");
         addBlock(BarrenBlocks.TINY_CACTUS, "仙人球");
         addBlock(BarrenBlocks.QUICKSAND, "§4流沙");
+        addBlock(BarrenBlocks.RED_QUICKSAND, "§4红流沙");
         addBlock(BarrenBlocks.SUSPICIOUS_RED, "§4可疑的红沙");
 
         // 砂岩 / 沙

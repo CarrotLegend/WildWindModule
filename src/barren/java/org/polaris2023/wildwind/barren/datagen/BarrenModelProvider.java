@@ -57,6 +57,7 @@ public class BarrenModelProvider extends ModelProvider {
 
         // 流沙 / 可疑沙
         blockModels.createTrivialCube(BarrenBlocks.QUICKSAND.get());
+        blockModels.createTrivialCube(BarrenBlocks.RED_QUICKSAND.get());
         blockModels.createBrushableBlock(BarrenBlocks.SUSPICIOUS_RED.get());
 
         // 砂岩

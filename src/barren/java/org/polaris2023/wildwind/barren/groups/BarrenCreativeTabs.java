@@ -39,7 +39,8 @@ public final class BarrenCreativeTabs {
             event.insertAfter(BarrenBlocks.SOUL_LEAVES.toStack(), BarrenBlocks.BLAZE_SAPLING.toStack(), VISIBILITY);
             event.insertAfter(BarrenBlocks.BLAZE_SAPLING.toStack(), BarrenBlocks.SOUL_SAPLING.toStack(), VISIBILITY);
             event.insertAfter(BarrenBlocks.SOUL_SAPLING.toStack(), BarrenBlocks.QUICKSAND.toStack(), VISIBILITY);
-            event.insertAfter(BarrenBlocks.QUICKSAND.toStack(), BarrenBlocks.QUARTZ_SAND.toStack(), VISIBILITY);
+            event.insertAfter(BarrenBlocks.QUICKSAND.toStack(), BarrenBlocks.RED_QUICKSAND.toStack(), VISIBILITY);
+            event.insertAfter(BarrenBlocks.RED_QUICKSAND.toStack(), BarrenBlocks.QUARTZ_SAND.toStack(), VISIBILITY);
             event.insertAfter(BarrenBlocks.QUARTZ_SAND.toStack(), BarrenBlocks.TINY_CACTUS.toStack(), VISIBILITY);
         }
     }

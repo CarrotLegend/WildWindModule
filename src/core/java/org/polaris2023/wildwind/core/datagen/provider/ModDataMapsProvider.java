@@ -1,6 +1,7 @@
 package org.polaris2023.wildwind.core.datagen.provider;
 
 import net.minecraft.core.HolderLookup;
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.data.PackOutput;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.item.Item;
@@ -50,6 +51,8 @@ public class ModDataMapsProvider extends DataMapProvider {
     }
 
     private ResourceKey<Item> itemKey(Block block) {
-        return block.asItem().builtInRegistryHolder().key();
+        Item item = block.asItem();
+        return BuiltInRegistries.ITEM.getResourceKey(item)
+                .orElseThrow(() -> new IllegalStateException("未注册的物品: " + item));
     }
 }

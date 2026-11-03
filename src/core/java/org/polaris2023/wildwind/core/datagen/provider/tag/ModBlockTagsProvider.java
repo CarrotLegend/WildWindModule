@@ -1,9 +1,10 @@
 package org.polaris2023.wildwind.core.datagen.provider.tag;
 
-import net.minecraft.core.Holder;
 import net.minecraft.core.HolderLookup;
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.tags.TagAppender;
+import net.minecraft.resources.ResourceKey;
 import net.minecraft.tags.BlockItemTags;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.tags.TagKey;
@@ -84,9 +85,13 @@ public class ModBlockTagsProvider extends BlockTagsProvider {
         addToTag(BlockTags.OVERWORLD_NATURAL_LOGS, log);
     }
 
-    @SuppressWarnings("all")
-    public TagAppender<Block> addToTag(TagKey<Block> tag, Block... items) {
-        if (items.length == 0) return tag(tag);
-        return tag(tag).addAll(Arrays.stream(items).map(Block::builtInRegistryHolder).map(Holder.Reference::getKey));
+    public TagAppender<Block> addToTag(TagKey<Block> tag, Block... blocks) {
+        if (blocks.length == 0) return tag(tag);
+        return tag(tag).addAll(Arrays.stream(blocks).map(ModBlockTagsProvider::blockKey));
+    }
+
+    private static ResourceKey<Block> blockKey(Block block) {
+        return BuiltInRegistries.BLOCK.getResourceKey(block)
+                .orElseThrow(() -> new IllegalStateException("未注册的方块: " + block));
     }
 }

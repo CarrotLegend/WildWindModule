@@ -62,6 +62,7 @@ public class BarrenEnUsLanguageProvider extends LanguageProvider {
         addBlock(BarrenBlocks.SCORCHED_TWIG, "Scorched Twig");
         addBlock(BarrenBlocks.TINY_CACTUS, "Tiny Cactus");
         addBlock(BarrenBlocks.QUICKSAND, "§4Quicksand");
+        addBlock(BarrenBlocks.RED_QUICKSAND, "§4Red Quicksand");
         addBlock(BarrenBlocks.SUSPICIOUS_RED, "§4Suspicious Red Sand");
 
         // 砂岩 / 沙

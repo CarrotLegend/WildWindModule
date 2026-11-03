@@ -171,13 +171,14 @@ public final class BarrenBlocks {
                     .randomTicks())
     );
 
-    @SuppressWarnings("deprecation")
     public static final DeferredBlock<FlowerPotBlock> POTTED_BLAZE_SAPLING = BLOCKS.registerBlock(
             "potted_blaze_sapling",
-            p -> new FlowerPotBlock(BLAZE_SAPLING.get(), p
-                    .instabreak()
-                    .noOcclusion()
-                    .pushReaction(PushReaction.DESTROY))
+            p -> new FlowerPotBlock(
+                    () -> (FlowerPotBlock) Blocks.FLOWER_POT,
+                    BLAZE_SAPLING,
+                    p.instabreak()
+                            .noOcclusion()
+                            .pushReaction(PushReaction.DESTROY))
     );
 
     // ==================== 灵焰木套件 (soul_wood) ====================
@@ -306,13 +307,14 @@ public final class BarrenBlocks {
                     .randomTicks())
     );
 
-    @SuppressWarnings("deprecation")
     public static final DeferredBlock<FlowerPotBlock> POTTED_SOUL_SAPLING = BLOCKS.registerBlock(
             "potted_soul_sapling",
-            p -> new FlowerPotBlock(SOUL_SAPLING.get(), p
-                    .instabreak()
-                    .noOcclusion()
-                    .pushReaction(PushReaction.DESTROY))
+            p -> new FlowerPotBlock(
+                    () -> (FlowerPotBlock) Blocks.FLOWER_POT,
+                    SOUL_SAPLING,
+                    p.instabreak()
+                            .noOcclusion()
+                            .pushReaction(PushReaction.DESTROY))
     );
 
     // ==================== 焦土 / 瘠地装饰 ====================
@@ -374,6 +376,15 @@ public final class BarrenBlocks {
             "quicksand",
             p -> new Block(p
                     .mapColor(MapColor.SAND)
+                    .strength(0.5F)
+                    .sound(SoundType.SAND))
+    );
+
+    /** 红色流沙 */
+    public static final DeferredBlock<Block> RED_QUICKSAND = BLOCKS.registerBlock(
+            "red_quicksand",
+            p -> new Block(p
+                    .mapColor(MapColor.COLOR_ORANGE)
                     .strength(0.5F)
                     .sound(SoundType.SAND))
     );
@@ -593,6 +604,7 @@ public final class BarrenBlocks {
         ITEMS.registerSimpleBlockItem(SCORCHED_TWIG);
         ITEMS.registerSimpleBlockItem(TINY_CACTUS);
         ITEMS.registerSimpleBlockItem(QUICKSAND);
+        ITEMS.registerSimpleBlockItem(RED_QUICKSAND);
         ITEMS.registerSimpleBlockItem(SUSPICIOUS_RED);
 
         // 砂岩 / 沙

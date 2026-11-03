@@ -95,6 +95,20 @@ public class FletchingTableMenu extends AbstractContainerMenu {
             return false;
         }
 
+        /**
+         * 产物不可拆分。原版 {@code clicked} 的「右键取半组」、Q 键丢弃、以及与光标同物品合并
+         * 都走 {@code tryRemove(amount, ...)}，amount 会小于产物数量；直接放行就会出现
+         * 「只拿走一半、材料却按整份扣」的情况，所以这里一律按整份取走，放不下就一个都不取。
+         */
+        @Override
+        public Optional<ItemStack> tryRemove(int amount, int maxAmount, Player player) {
+            ItemStack result = this.getItem();
+            if (result.isEmpty() || maxAmount < result.getCount()) {
+                return Optional.empty();
+            }
+            return super.tryRemove(result.getCount(), maxAmount, player);
+        }
+
         @Override
         public void onTake(Player player, ItemStack stack) {
             // 取走产物后消耗每样材料各 1 个
@@ -107,42 +121,70 @@ public class FletchingTableMenu extends AbstractContainerMenu {
 
     @Override
     public ItemStack quickMoveStack(Player player, int index) {
-        ItemStack itemStack = ItemStack.EMPTY;
         Slot slot = this.slots.get(index);
+        if (slot == null || !slot.hasItem()) {
+            return ItemStack.EMPTY;
+        }
 
-        if (slot != null && slot.hasItem()) {
-            ItemStack slotItem = slot.getItem();
-            itemStack = slotItem.copy();
+        ItemStack slotItem = slot.getItem();
+        ItemStack moved = slotItem.copy();
 
-            // 输出槽 (index 3) -> 背包
-            if (index == FletchingTableBlockEntity.Slots.SLOT_RESULT.slot) {
-                if (!this.moveItemStackTo(slotItem, INV_START, this.slots.size(), true)) {
-                    return ItemStack.EMPTY;
-                }
-                slot.onTake(player, slotItem);
+        // 输出槽：搬进背包后由 onTake 消费材料并重算下一份产物。
+        // 这里绝不能像普通槽位那样把槽置空，否则会把刚重算好的产物清掉，shift 就只能合成一次
+        if (index == FletchingTableBlockEntity.Slots.SLOT_RESULT.slot) {
+            if (!this.moveItemStackTo(slotItem, INV_START, this.slots.size(), true)) {
+                return ItemStack.EMPTY;
             }
-            // 方块自己的槽 (index 0-3) -> 背包
-            else if (index < INV_START) {
-                if (!this.moveItemStackTo(slotItem, INV_START, this.slots.size(), true)) {
-                    return ItemStack.EMPTY;
-                }
-            }
-            // 玩家物品栏
-            else {
-                // 尝试放入输入槽（0-2），放不下再留在背包
-                if (!this.moveItemStackTo(slotItem, 0, FletchingTableBlockEntity.Slots.SLOT_RESULT.slot, false)) {
-                    return ItemStack.EMPTY;
-                }
-            }
+            slot.onTake(player, slotItem);
+            return moved;
+        }
 
-            if (slotItem.isEmpty()) {
-                slot.set(ItemStack.EMPTY);
-            } else {
-                slot.setChanged();
+        if (index < INV_START) {
+            // 方块自己的槽 -> 背包
+            if (!this.moveItemStackTo(slotItem, INV_START, this.slots.size(), true)) {
+                return ItemStack.EMPTY;
+            }
+        } else {
+            // 玩家物品栏 -> 输入槽（0-2），放不下再留在背包
+            if (!this.moveItemStackTo(slotItem, 0, FletchingTableBlockEntity.Slots.SLOT_RESULT.slot, false)) {
+                return ItemStack.EMPTY;
             }
         }
 
-        return itemStack;
+        if (slotItem.isEmpty()) {
+            slot.set(ItemStack.EMPTY);
+        } else {
+            slot.setChanged();
+        }
+
+        return moved;
+    }
+
+    /**
+     * 关闭界面时把三个输入槽的材料还给玩家（背包放不下就丢在地上），
+     * 与原版工作台行为一致，避免材料遗留在方块里。
+     */
+    @Override
+    public void removed(Player player) {
+        super.removed(player);
+        if (!(this.container instanceof FletchingTableBlockEntity be)) {
+            return;
+        }
+
+        for (FletchingTableBlockEntity.Slots slot : FletchingTableBlockEntity.Slots.values()) {
+            if (slot == FletchingTableBlockEntity.Slots.SLOT_RESULT) {
+                continue;
+            }
+            ItemStack stack = be.getItem(slot.slot);
+            if (stack.isEmpty()) {
+                continue;
+            }
+            be.setItem(slot.slot, ItemStack.EMPTY);
+            if (!player.getInventory().add(stack)) {
+                player.drop(stack, false);
+            }
+        }
+        be.setChanged();
     }
 
     @Override
