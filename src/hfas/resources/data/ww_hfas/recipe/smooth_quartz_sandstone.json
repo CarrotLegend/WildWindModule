@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:smelting",
+  "category": "blocks",
+  "experience": 0.1,
+  "ingredient": "ww_hfas:quartz_sandstone",
+  "result": {
+    "id": "ww_hfas:smooth_quartz_sandstone"
+  }
+}

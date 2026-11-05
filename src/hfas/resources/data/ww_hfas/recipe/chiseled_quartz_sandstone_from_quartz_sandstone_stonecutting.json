@@ -1,0 +1,7 @@
+{
+  "type": "minecraft:stonecutting",
+  "ingredient": "ww_hfas:quartz_sandstone",
+  "result": {
+    "id": "ww_hfas:chiseled_quartz_sandstone"
+  }
+}
