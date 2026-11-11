@@ -557,6 +557,14 @@ public final class BarrenBlocks {
                     .sound(SoundType.SOUL_SAND))
     );
 
+    public static final DeferredBlock<Block> ASH_BLOCK = BLOCKS.registerBlock(
+            "ash_block",
+            p -> new Block(p
+                    .mapColor(MapColor.COLOR_GRAY)
+                    .strength(0.5F)
+                    .sound(SoundType.SAND))
+    );
+
     public static void register(IEventBus bus) {
         BLOCKS.register(bus);
         blockItems();
@@ -625,6 +633,7 @@ public final class BarrenBlocks {
         ITEMS.registerSimpleBlockItem(SOUL_QUICKSAND);
         ITEMS.registerSimpleBlockItem(SUSPICIOUS_QUARTZ_SAND);
         ITEMS.registerSimpleBlockItem(SUSPICIOUS_SOUL_SAND);
+        ITEMS.registerSimpleBlockItem(ASH_BLOCK);
     }
 
     private BarrenBlocks() {

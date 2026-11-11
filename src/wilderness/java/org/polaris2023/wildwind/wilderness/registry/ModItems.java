@@ -52,6 +52,8 @@ public class ModItems {
     public static void register(IEventBus modBus) {
         ITEMS.register(modBus);
     }
+    
+    public static final DeferredItem<Item> SPIDER_EGG = register("spider_egg");
 
 
     public static DeferredItem<SpawnEggItem> registerMobEgg(String id, Holder<EntityType<?>> type){

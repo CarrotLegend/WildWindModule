@@ -73,6 +73,8 @@ public class ModBlockTagsProvider extends BlockTagsProvider {
         addToTag(BlockTags.WOODEN_TRAPDOORS, trapdoor);
         addToTag(BlockTags.WOODEN_PRESSURE_PLATES, pressurePlate);
         addToTag(BlockTags.WOODEN_BUTTONS, button);
+        addToTag(BlockTags.FLOWERS, ModBlocks.WITHER_ROSE_BUSH.get());
+        addToTag(BlockTags.MINEABLE_WITH_PICKAXE, ModBlocks.KILN.get());    
 
         if (family.leaves() != null) {
             addToTag(BlockTags.LEAVES, family.leaves().get());

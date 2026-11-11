@@ -58,6 +58,7 @@ public class BarrenBlockTagsProvider extends BlockTagsProvider {
                 BarrenBlocks.QUARTZ_QUICKSAND.get(),
                 BarrenBlocks.SOUL_QUICKSAND.get(),
                 BarrenBlocks.SUSPICIOUS_QUARTZ_SAND.get(),
+                BarrenBlocks.ASH_BLOCK.get(),
                 BarrenBlocks.SUSPICIOUS_SOUL_SAND.get());
     }
 

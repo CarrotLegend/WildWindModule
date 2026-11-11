@@ -10,6 +10,7 @@ import org.polaris2023.wildwind.barren.WildWindBarren;
 import org.polaris2023.wildwind.barren.block.BarrenBlocks;
 import org.polaris2023.wildwind.barren.block.BarrenWoodFamilies;
 import org.polaris2023.wildwind.core.block.WoodFamily;
+import org.polaris2023.wildwind.barren.registry.ModItems;
 
 /**
  * 瘠土更新自己的创造模式物品栏页。
@@ -46,6 +47,7 @@ public final class ModCreativeTabs {
         output.accept(BarrenBlocks.SCORCHED_GRASS.get());
         output.accept(BarrenBlocks.SCORCHED_TWIG.get());
         output.accept(BarrenBlocks.TINY_CACTUS.get());
+        output.accept(BarrenBlocks.ASH_BLOCK.get());
 
         // 沙 / 流沙
         output.accept(BarrenBlocks.QUARTZ_SAND.get());
@@ -72,6 +74,8 @@ public final class ModCreativeTabs {
         output.accept(BarrenBlocks.SUSPICIOUS_RED.get());
         output.accept(BarrenBlocks.SUSPICIOUS_QUARTZ_SAND.get());
         output.accept(BarrenBlocks.SUSPICIOUS_SOUL_SAND.get());
+
+        output.accept(ModItems.ASH.get());
     }
 
     private ModCreativeTabs() {

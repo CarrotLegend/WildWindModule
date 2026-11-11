@@ -26,8 +26,10 @@ public class WildernessModelProvider extends ModelProvider {
     protected void registerModels(BlockModelGenerators blockModels, ItemModelGenerators itemModels) {
         // 灵魂南瓜灯 - 正面自定义贴图，其余使用原版南瓜
         blockModels.createPumpkinVariant(WildernessBlocks.SOUL_JACK_O_LANTERN.get(), TextureMapping.column(Blocks.PUMPKIN));
+        blockModels.createTrivialCube(WildernessBlocks.SILT.get());
 
         // 独立物品
+        itemModels.generateFlatItem(ModItems.SPIDER_EGG.get(), ModelTemplates.FLAT_ITEM);
         itemModels.generateFlatItem(ModItems.CRAB_CLAW.get(), ModelTemplates.FLAT_ITEM);
         itemModels.generateFlatItem(ModItems.MUDCRAB_BUCKET.get(), ModelTemplates.FLAT_ITEM);
         itemModels.generateFlatItem(ModItems.MUDCRAB_SPAWN_EGG.get(), ModelTemplates.FLAT_ITEM);

@@ -58,6 +58,7 @@ public class BarrenBlockLoot extends BlockLootSubProvider {
         dropSelf(BarrenBlocks.QUARTZ_SAND.get());
         dropSelf(BarrenBlocks.QUARTZ_QUICKSAND.get());
         dropSelf(BarrenBlocks.SOUL_QUICKSAND.get());
+        dropSelf(BarrenBlocks.ASH_BLOCK.get());
         add(BarrenBlocks.SUSPICIOUS_QUARTZ_SAND.get(), createSilkTouchOnlyTable(BarrenBlocks.SUSPICIOUS_QUARTZ_SAND.get()));
         add(BarrenBlocks.SUSPICIOUS_SOUL_SAND.get(), createSilkTouchOnlyTable(BarrenBlocks.SUSPICIOUS_SOUL_SAND.get()));
     }

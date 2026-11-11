@@ -18,6 +18,7 @@ public class WildWindBarren {
     public WildWindBarren(IEventBus bus) {
         BarrenBlocks.register(bus);
         ModCreativeTabs.register(bus);
+        ModItems.register(bus);
     }
 
     public static Identifier id(String path) {

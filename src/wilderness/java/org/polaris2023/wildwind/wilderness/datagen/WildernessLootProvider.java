@@ -100,6 +100,7 @@ public class WildernessLootProvider extends LootTableProvider {
         @Override
         protected void generate() {
             dropSelf(WildernessBlocks.SOUL_JACK_O_LANTERN.get());
+            dropSelf(WildernessBlocks.SILT.get());
         }
     }
 }

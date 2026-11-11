@@ -18,6 +18,7 @@ import org.polaris2023.wildwind.barren.WildWindBarren;
 import org.polaris2023.wildwind.barren.block.BarrenBlocks;
 import org.polaris2023.wildwind.barren.block.BarrenWoodFamilies;
 import org.polaris2023.wildwind.core.block.WoodFamily;
+import org.polaris2023.wildwind.barren.registry.ModItems;
 
 import java.util.Optional;
 
@@ -54,6 +55,8 @@ public class BarrenModelProvider extends ModelProvider {
         blockModels.createCrossBlock(BarrenBlocks.SCORCHED_GRASS.get(), BlockModelGenerators.PlantType.NOT_TINTED);
         blockModels.createCrossBlock(BarrenBlocks.SCORCHED_TWIG.get(), BlockModelGenerators.PlantType.NOT_TINTED);
         blockModels.createCrossBlock(BarrenBlocks.TINY_CACTUS.get(), BlockModelGenerators.PlantType.NOT_TINTED);
+        blockModels.createTrivialCube(BarrenBlocks.ASH_BLOCK.get());
+        itemModels.generateFlatItem(ModItems.ASH.get(), ModelTemplates.FLAT_ITEM);
 
         // 流沙 / 可疑沙
         blockModels.createTrivialCube(BarrenBlocks.QUICKSAND.get());

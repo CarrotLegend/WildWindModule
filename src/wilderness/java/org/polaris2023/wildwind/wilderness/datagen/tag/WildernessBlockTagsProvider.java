@@ -38,6 +38,7 @@ public class WildernessBlockTagsProvider extends BlockTagsProvider {
                 .addTag(Tags.Blocks.GRAVELS);
 
         addToTag(ModBlockTags.EntityAbout.MUDCRAB_PREFERRED_WANDER_BLOCKS, Blocks.MANGROVE_LOG, Blocks.MANGROVE_ROOTS, Blocks.MUDDY_MANGROVE_ROOTS);
+        addToTag(BlockTags.MINEABLE_WITH_SHOVEL, WildernessBlocks.SILT.get());
     }
 
     @SuppressWarnings("all")

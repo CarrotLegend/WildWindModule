@@ -35,6 +35,8 @@ public class BlockLoot extends BlockLootSubProvider {
         dropSelf(ModBlocks.ROSE.get());
         dropSelf(ModBlocks.SOUL_ROSE.get());
         dropSelf(ModBlocks.SOUL_ROSE_BUSH.get());
+        dropSelf(ModBlocks.WITHER_ROSE_BUSH.get());
+        dropSelf(ModBlocks.KILN.get());
     }
 
     private void generateWood(WoodFamily family) {

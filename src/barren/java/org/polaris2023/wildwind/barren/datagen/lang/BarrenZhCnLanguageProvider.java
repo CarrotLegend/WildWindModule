@@ -4,6 +4,7 @@ import net.minecraft.data.PackOutput;
 import net.neoforged.neoforge.common.data.LanguageProvider;
 import org.polaris2023.wildwind.barren.WildWindBarren;
 import org.polaris2023.wildwind.barren.block.BarrenBlocks;
+import org.polaris2023.wildwind.barren.registry.ModItems;
 
 /**
  * 瘠土更新的简体中文语言文件。
@@ -64,6 +65,7 @@ public class BarrenZhCnLanguageProvider extends LanguageProvider {
         addBlock(BarrenBlocks.QUICKSAND, "§4流沙");
         addBlock(BarrenBlocks.RED_QUICKSAND, "§4红流沙");
         addBlock(BarrenBlocks.SUSPICIOUS_RED, "§4可疑的红沙");
+        addBlock(BarrenBlocks.ASH_BLOCK, "灰烬块");
 
         // 砂岩 / 沙
         addBlock(BarrenBlocks.CHISELED_QUARTZ_SANDSTONE, "雕纹石英砂岩");
@@ -83,5 +85,7 @@ public class BarrenZhCnLanguageProvider extends LanguageProvider {
         addBlock(BarrenBlocks.SOUL_QUICKSAND, "灵魂流沙");
         addBlock(BarrenBlocks.SUSPICIOUS_QUARTZ_SAND, "可疑的珍珠沙");
         addBlock(BarrenBlocks.SUSPICIOUS_SOUL_SAND, "可疑的灵魂沙");
+
+        addItem(ModItems.ASH, "灰烬");
     }
 }
