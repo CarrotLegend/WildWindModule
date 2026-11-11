@@ -59,6 +59,18 @@ public class BlockLoot extends BlockLootSubProvider {
         dropSelf(ModBlocks.SOUL_SANDSTONE.get());
         dropSelf(ModBlocks.SMOOTH_QUARTZ_SANDSTONE.get());
         dropSelf(ModBlocks.SMOOTH_SOUL_SANDSTONE.get());
+        dropSelf(ModBlocks.QUARTZ_SANDSTONE_STAIRS.get());
+        add(ModBlocks.QUARTZ_SANDSTONE_SLAB.get(), this::createSlabItemTable);
+        dropSelf(ModBlocks.QUARTZ_SANDSTONE_WALL.get());
+        dropSelf(ModBlocks.SMOOTH_QUARTZ_SANDSTONE_STAIRS.get());
+        add(ModBlocks.SMOOTH_QUARTZ_SANDSTONE_SLAB.get(), this::createSlabItemTable);
+        add(ModBlocks.CUT_QUARTZ_SANDSTONE_SLAB.get(), this::createSlabItemTable);
+        dropSelf(ModBlocks.SOUL_SANDSTONE_STAIRS.get());
+        add(ModBlocks.SOUL_SANDSTONE_SLAB.get(), this::createSlabItemTable);
+        dropSelf(ModBlocks.SOUL_SANDSTONE_WALL.get());
+        dropSelf(ModBlocks.SMOOTH_SOUL_SANDSTONE_STAIRS.get());
+        add(ModBlocks.SMOOTH_SOUL_SANDSTONE_SLAB.get(), this::createSlabItemTable);
+        add(ModBlocks.CUT_SOUL_SANDSTONE_SLAB.get(), this::createSlabItemTable);
         dropSelf(ModBlocks.QUARTZ_SAND.get());
         dropSelf(ModBlocks.QUARTZ_QUICKSAND.get());
         dropSelf(ModBlocks.SOUL_QUICKSAND.get());

@@ -1,0 +1,28 @@
+{
+  "values": [
+    "ww_hfas:chiseled_quartz_sandstone",
+    "ww_hfas:chiseled_soul_sandstone",
+    "ww_hfas:cut_quartz_sandstone",
+    "ww_hfas:cut_soul_sandstone",
+    "ww_hfas:nitrified_quartz_sandstone",
+    "ww_hfas:nitrified_red_sandstone",
+    "ww_hfas:nitrified_sandstone",
+    "ww_hfas:nitrified_soul_sandstone",
+    "ww_hfas:quartz_sandstone",
+    "ww_hfas:soul_sandstone",
+    "ww_hfas:smooth_quartz_sandstone",
+    "ww_hfas:smooth_soul_sandstone",
+    "ww_hfas:quartz_sandstone_stairs",
+    "ww_hfas:quartz_sandstone_slab",
+    "ww_hfas:quartz_sandstone_wall",
+    "ww_hfas:smooth_quartz_sandstone_stairs",
+    "ww_hfas:smooth_quartz_sandstone_slab",
+    "ww_hfas:cut_quartz_sandstone_slab",
+    "ww_hfas:soul_sandstone_stairs",
+    "ww_hfas:soul_sandstone_slab",
+    "ww_hfas:soul_sandstone_wall",
+    "ww_hfas:smooth_soul_sandstone_stairs",
+    "ww_hfas:smooth_soul_sandstone_slab",
+    "ww_hfas:cut_soul_sandstone_slab"
+  ]
+}

@@ -44,6 +44,60 @@ public class ModModelProvider extends ModelProvider {
             TextureSlot.SIDE, TextureSlot.TOP, TextureSlot.BOTTOM
     );
 
+    private void registerSandstoneVariants(BlockModelGenerators models, Block base, Block stairs, Block slab, Block wall,
+                                           Block smooth, Block smoothStairs, Block smoothSlab, Block cut, Block cutSlab) {
+        Material top = TextureMapping.getBlockTexture(base, "_top");
+        TextureMapping ordinary = sandstoneTextures(TextureMapping.getBlockTexture(base), top,
+                TextureMapping.getBlockTexture(base, "_bottom"));
+        createSandstoneStairs(models, stairs, ordinary);
+        createSandstoneSlab(models, slab, base, ordinary);
+        createSandstoneWall(models, wall, ordinary);
+
+        TextureMapping smoothTextures = sandstoneTextures(top, top, top);
+        createSandstoneStairs(models, smoothStairs, smoothTextures);
+        createSandstoneSlab(models, smoothSlab, smooth, smoothTextures);
+        createSandstoneSlab(models, cutSlab, cut, sandstoneTextures(TextureMapping.getBlockTexture(cut), top, top));
+    }
+
+    private TextureMapping sandstoneTextures(Material side, Material top, Material bottom) {
+        return new TextureMapping().put(TextureSlot.SIDE, side).put(TextureSlot.TOP, top).put(TextureSlot.BOTTOM, bottom);
+    }
+
+    private void createSandstoneStairs(BlockModelGenerators models, Block stairs, TextureMapping textures) {
+        Identifier inner = ModelTemplates.STAIRS_INNER.create(stairs, textures, models.modelOutput);
+        Identifier straight = ModelTemplates.STAIRS_STRAIGHT.create(stairs, textures, models.modelOutput);
+        Identifier outer = ModelTemplates.STAIRS_OUTER.create(stairs, textures, models.modelOutput);
+        models.blockStateOutput.accept(BlockModelGenerators.createStairs(stairs,
+                BlockModelGenerators.plainVariant(inner), BlockModelGenerators.plainVariant(straight),
+                BlockModelGenerators.plainVariant(outer)));
+        models.registerSimpleItemModel(stairs.asItem(), straight);
+    }
+
+    private void createSandstoneSlab(BlockModelGenerators models, Block slab, Block base, TextureMapping textures) {
+        Identifier bottom = ModelTemplates.SLAB_BOTTOM.create(slab, textures, models.modelOutput);
+        Identifier top = ModelTemplates.SLAB_TOP.create(slab, textures, models.modelOutput);
+        models.blockStateOutput.accept(BlockModelGenerators.createSlab(slab,
+                BlockModelGenerators.plainVariant(bottom), BlockModelGenerators.plainVariant(top),
+                BlockModelGenerators.plainVariant(ModelLocationUtils.getModelLocation(base))));
+        models.registerSimpleItemModel(slab.asItem(), bottom);
+    }
+
+    private void createSandstoneWall(BlockModelGenerators models, Block wall, TextureMapping textures) {
+        Identifier post = sandstoneWallTemplate("post").create(wall, textures, models.modelOutput);
+        Identifier side = sandstoneWallTemplate("side").create(wall, textures, models.modelOutput);
+        Identifier tall = sandstoneWallTemplate("side_tall").create(wall, textures, models.modelOutput);
+        Identifier inventory = sandstoneWallTemplate("inventory").create(wall, textures, models.modelOutput);
+        models.blockStateOutput.accept(BlockModelGenerators.createWall(wall,
+                BlockModelGenerators.plainVariant(post), BlockModelGenerators.plainVariant(side),
+                BlockModelGenerators.plainVariant(tall)));
+        models.registerSimpleItemModel(wall.asItem(), inventory);
+    }
+
+    private ModelTemplate sandstoneWallTemplate(String part) {
+        return new ModelTemplate(Optional.of(HFASMod.id("block/sandstone_wall_" + part + "_template")),
+                Optional.of("_" + part), TextureSlot.SIDE, TextureSlot.TOP, TextureSlot.BOTTOM);
+    }
+
     public ModModelProvider(PackOutput output) {
         super(output, HFASMod.MOD_ID);
     }
@@ -107,6 +161,15 @@ public class ModModelProvider extends ModelProvider {
         // 平滑砂岩 - 六面均为对应砂岩的顶面贴图，底面旋转 180 度
         createSmoothSandstone(blockModels, ModBlocks.SMOOTH_QUARTZ_SANDSTONE.get(), quartzTop);
         createSmoothSandstone(blockModels, ModBlocks.SMOOTH_SOUL_SANDSTONE.get(), soulTop);
+
+        registerSandstoneVariants(blockModels, ModBlocks.QUARTZ_SANDSTONE.get(), ModBlocks.QUARTZ_SANDSTONE_STAIRS.get(),
+                ModBlocks.QUARTZ_SANDSTONE_SLAB.get(), ModBlocks.QUARTZ_SANDSTONE_WALL.get(),
+                ModBlocks.SMOOTH_QUARTZ_SANDSTONE.get(), ModBlocks.SMOOTH_QUARTZ_SANDSTONE_STAIRS.get(), ModBlocks.SMOOTH_QUARTZ_SANDSTONE_SLAB.get(),
+                ModBlocks.CUT_QUARTZ_SANDSTONE.get(), ModBlocks.CUT_QUARTZ_SANDSTONE_SLAB.get());
+        registerSandstoneVariants(blockModels, ModBlocks.SOUL_SANDSTONE.get(), ModBlocks.SOUL_SANDSTONE_STAIRS.get(),
+                ModBlocks.SOUL_SANDSTONE_SLAB.get(), ModBlocks.SOUL_SANDSTONE_WALL.get(),
+                ModBlocks.SMOOTH_SOUL_SANDSTONE.get(), ModBlocks.SMOOTH_SOUL_SANDSTONE_STAIRS.get(), ModBlocks.SMOOTH_SOUL_SANDSTONE_SLAB.get(),
+                ModBlocks.CUT_SOUL_SANDSTONE.get(), ModBlocks.CUT_SOUL_SANDSTONE_SLAB.get());
 
         // 石英沙 / 流沙
         createSimpleBlock(blockModels, ModBlocks.QUARTZ_SAND.get());

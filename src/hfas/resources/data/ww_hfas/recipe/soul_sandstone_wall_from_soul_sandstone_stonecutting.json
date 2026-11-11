@@ -1,0 +1,7 @@
+{
+  "type": "minecraft:stonecutting",
+  "ingredient": "ww_hfas:soul_sandstone",
+  "result": {
+    "id": "ww_hfas:soul_sandstone_wall"
+  }
+}

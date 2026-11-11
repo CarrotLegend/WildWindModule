@@ -1,0 +1,7 @@
+{
+  "type": "minecraft:stonecutting",
+  "ingredient": "ww_hfas:smooth_soul_sandstone",
+  "result": {
+    "id": "ww_hfas:smooth_soul_sandstone_stairs"
+  }
+}

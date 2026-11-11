@@ -95,6 +95,18 @@ public class ZhCnLanguageProvider extends LanguageProvider {
         addBlock(ModBlocks.SOUL_SANDSTONE, "灵魂砂岩");
         addBlock(ModBlocks.SMOOTH_QUARTZ_SANDSTONE, "平滑石英砂岩");
         addBlock(ModBlocks.SMOOTH_SOUL_SANDSTONE, "平滑灵魂砂岩");
+        addBlock(ModBlocks.QUARTZ_SANDSTONE_STAIRS, "石英砂岩楼梯");
+        addBlock(ModBlocks.QUARTZ_SANDSTONE_SLAB, "石英砂岩台阶");
+        addBlock(ModBlocks.QUARTZ_SANDSTONE_WALL, "石英砂岩墙");
+        addBlock(ModBlocks.SMOOTH_QUARTZ_SANDSTONE_STAIRS, "平滑石英砂岩楼梯");
+        addBlock(ModBlocks.SMOOTH_QUARTZ_SANDSTONE_SLAB, "平滑石英砂岩台阶");
+        addBlock(ModBlocks.CUT_QUARTZ_SANDSTONE_SLAB, "切制石英砂岩台阶");
+        addBlock(ModBlocks.SOUL_SANDSTONE_STAIRS, "灵魂砂岩楼梯");
+        addBlock(ModBlocks.SOUL_SANDSTONE_SLAB, "灵魂砂岩台阶");
+        addBlock(ModBlocks.SOUL_SANDSTONE_WALL, "灵魂砂岩墙");
+        addBlock(ModBlocks.SMOOTH_SOUL_SANDSTONE_STAIRS, "平滑灵魂砂岩楼梯");
+        addBlock(ModBlocks.SMOOTH_SOUL_SANDSTONE_SLAB, "平滑灵魂砂岩台阶");
+        addBlock(ModBlocks.CUT_SOUL_SANDSTONE_SLAB, "切制灵魂砂岩台阶");
         addBlock(ModBlocks.QUARTZ_SAND, "石英沙子");
         addBlock(ModBlocks.QUARTZ_QUICKSAND, "石英流沙");
         addBlock(ModBlocks.SOUL_QUICKSAND, "灵魂流沙");

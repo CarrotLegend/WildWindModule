@@ -94,6 +94,18 @@ public class EnUsLanguageProvider extends LanguageProvider {
         addBlock(ModBlocks.SOUL_SANDSTONE, "Soul Sandstone");
         addBlock(ModBlocks.SMOOTH_QUARTZ_SANDSTONE, "Smooth Quartz Sandstone");
         addBlock(ModBlocks.SMOOTH_SOUL_SANDSTONE, "Smooth Soul Sandstone");
+        addBlock(ModBlocks.QUARTZ_SANDSTONE_STAIRS, "Quartz Sandstone Stairs");
+        addBlock(ModBlocks.QUARTZ_SANDSTONE_SLAB, "Quartz Sandstone Slab");
+        addBlock(ModBlocks.QUARTZ_SANDSTONE_WALL, "Quartz Sandstone Wall");
+        addBlock(ModBlocks.SMOOTH_QUARTZ_SANDSTONE_STAIRS, "Smooth Quartz Sandstone Stairs");
+        addBlock(ModBlocks.SMOOTH_QUARTZ_SANDSTONE_SLAB, "Smooth Quartz Sandstone Slab");
+        addBlock(ModBlocks.CUT_QUARTZ_SANDSTONE_SLAB, "Cut Quartz Sandstone Slab");
+        addBlock(ModBlocks.SOUL_SANDSTONE_STAIRS, "Soul Sandstone Stairs");
+        addBlock(ModBlocks.SOUL_SANDSTONE_SLAB, "Soul Sandstone Slab");
+        addBlock(ModBlocks.SOUL_SANDSTONE_WALL, "Soul Sandstone Wall");
+        addBlock(ModBlocks.SMOOTH_SOUL_SANDSTONE_STAIRS, "Smooth Soul Sandstone Stairs");
+        addBlock(ModBlocks.SMOOTH_SOUL_SANDSTONE_SLAB, "Smooth Soul Sandstone Slab");
+        addBlock(ModBlocks.CUT_SOUL_SANDSTONE_SLAB, "Cut Soul Sandstone Slab");
         addBlock(ModBlocks.QUARTZ_SAND, "Quartz Sand");
         addBlock(ModBlocks.QUARTZ_QUICKSAND, "Quartz Quicksand");
         addBlock(ModBlocks.SOUL_QUICKSAND, "Soul Quicksand");

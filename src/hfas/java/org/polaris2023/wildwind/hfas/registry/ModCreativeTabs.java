@@ -64,17 +64,29 @@ public class ModCreativeTabs {
 
         // 石英岩类
         output.accept(ModBlocks.QUARTZ_SANDSTONE.get());
+        output.accept(ModBlocks.QUARTZ_SANDSTONE_STAIRS.get());
+        output.accept(ModBlocks.QUARTZ_SANDSTONE_SLAB.get());
+        output.accept(ModBlocks.QUARTZ_SANDSTONE_WALL.get());
         output.accept(ModBlocks.CHISELED_QUARTZ_SANDSTONE.get());
-        output.accept(ModBlocks.CUT_QUARTZ_SANDSTONE.get());
-        output.accept(ModBlocks.NITRIFIED_QUARTZ_SANDSTONE.get());
         output.accept(ModBlocks.SMOOTH_QUARTZ_SANDSTONE.get());
+        output.accept(ModBlocks.SMOOTH_QUARTZ_SANDSTONE_STAIRS.get());
+        output.accept(ModBlocks.SMOOTH_QUARTZ_SANDSTONE_SLAB.get());
+        output.accept(ModBlocks.CUT_QUARTZ_SANDSTONE.get());
+        output.accept(ModBlocks.CUT_QUARTZ_SANDSTONE_SLAB.get());
+        output.accept(ModBlocks.NITRIFIED_QUARTZ_SANDSTONE.get());
 
         // 灵魂岩类
         output.accept(ModBlocks.SOUL_SANDSTONE.get());
+        output.accept(ModBlocks.SOUL_SANDSTONE_STAIRS.get());
+        output.accept(ModBlocks.SOUL_SANDSTONE_SLAB.get());
+        output.accept(ModBlocks.SOUL_SANDSTONE_WALL.get());
         output.accept(ModBlocks.CHISELED_SOUL_SANDSTONE.get());
-        output.accept(ModBlocks.CUT_SOUL_SANDSTONE.get());
-        output.accept(ModBlocks.NITRIFIED_SOUL_SANDSTONE.get());
         output.accept(ModBlocks.SMOOTH_SOUL_SANDSTONE.get());
+        output.accept(ModBlocks.SMOOTH_SOUL_SANDSTONE_STAIRS.get());
+        output.accept(ModBlocks.SMOOTH_SOUL_SANDSTONE_SLAB.get());
+        output.accept(ModBlocks.CUT_SOUL_SANDSTONE.get());
+        output.accept(ModBlocks.CUT_SOUL_SANDSTONE_SLAB.get());
+        output.accept(ModBlocks.NITRIFIED_SOUL_SANDSTONE.get());
 
         // 硝化岩类
         output.accept(ModBlocks.NITRIFIED_SANDSTONE.get());

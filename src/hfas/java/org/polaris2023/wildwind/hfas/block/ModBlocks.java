@@ -693,6 +693,43 @@ public class ModBlocks {
                     .requiresCorrectToolForDrops())
     );
 
+    public static final DeferredBlock<StairBlock> QUARTZ_SANDSTONE_STAIRS = BLOCKS.registerBlock(
+            "quartz_sandstone_stairs", p -> new StairBlock(QUARTZ_SANDSTONE.get().defaultBlockState(), p),
+            () -> BlockBehaviour.Properties.ofLegacyCopy(QUARTZ_SANDSTONE.get()));
+    public static final DeferredBlock<SlabBlock> QUARTZ_SANDSTONE_SLAB = BLOCKS.registerBlock(
+            "quartz_sandstone_slab", SlabBlock::new,
+            () -> BlockBehaviour.Properties.ofLegacyCopy(QUARTZ_SANDSTONE.get()));
+    public static final DeferredBlock<WallBlock> QUARTZ_SANDSTONE_WALL = BLOCKS.registerBlock(
+            "quartz_sandstone_wall", WallBlock::new,
+            () -> BlockBehaviour.Properties.ofLegacyCopy(QUARTZ_SANDSTONE.get()));
+    public static final DeferredBlock<StairBlock> SMOOTH_QUARTZ_SANDSTONE_STAIRS = BLOCKS.registerBlock(
+            "smooth_quartz_sandstone_stairs", p -> new StairBlock(SMOOTH_QUARTZ_SANDSTONE.get().defaultBlockState(), p),
+            () -> BlockBehaviour.Properties.ofLegacyCopy(SMOOTH_QUARTZ_SANDSTONE.get()));
+    public static final DeferredBlock<SlabBlock> SMOOTH_QUARTZ_SANDSTONE_SLAB = BLOCKS.registerBlock(
+            "smooth_quartz_sandstone_slab", SlabBlock::new,
+            () -> BlockBehaviour.Properties.ofLegacyCopy(SMOOTH_QUARTZ_SANDSTONE.get()));
+    public static final DeferredBlock<SlabBlock> CUT_QUARTZ_SANDSTONE_SLAB = BLOCKS.registerBlock(
+            "cut_quartz_sandstone_slab", SlabBlock::new,
+            () -> BlockBehaviour.Properties.ofLegacyCopy(CUT_QUARTZ_SANDSTONE.get()));
+    public static final DeferredBlock<StairBlock> SOUL_SANDSTONE_STAIRS = BLOCKS.registerBlock(
+            "soul_sandstone_stairs", p -> new StairBlock(SOUL_SANDSTONE.get().defaultBlockState(), p),
+            () -> BlockBehaviour.Properties.ofLegacyCopy(SOUL_SANDSTONE.get()));
+    public static final DeferredBlock<SlabBlock> SOUL_SANDSTONE_SLAB = BLOCKS.registerBlock(
+            "soul_sandstone_slab", SlabBlock::new,
+            () -> BlockBehaviour.Properties.ofLegacyCopy(SOUL_SANDSTONE.get()));
+    public static final DeferredBlock<WallBlock> SOUL_SANDSTONE_WALL = BLOCKS.registerBlock(
+            "soul_sandstone_wall", WallBlock::new,
+            () -> BlockBehaviour.Properties.ofLegacyCopy(SOUL_SANDSTONE.get()));
+    public static final DeferredBlock<StairBlock> SMOOTH_SOUL_SANDSTONE_STAIRS = BLOCKS.registerBlock(
+            "smooth_soul_sandstone_stairs", p -> new StairBlock(SMOOTH_SOUL_SANDSTONE.get().defaultBlockState(), p),
+            () -> BlockBehaviour.Properties.ofLegacyCopy(SMOOTH_SOUL_SANDSTONE.get()));
+    public static final DeferredBlock<SlabBlock> SMOOTH_SOUL_SANDSTONE_SLAB = BLOCKS.registerBlock(
+            "smooth_soul_sandstone_slab", SlabBlock::new,
+            () -> BlockBehaviour.Properties.ofLegacyCopy(SMOOTH_SOUL_SANDSTONE.get()));
+    public static final DeferredBlock<SlabBlock> CUT_SOUL_SANDSTONE_SLAB = BLOCKS.registerBlock(
+            "cut_soul_sandstone_slab", SlabBlock::new,
+            () -> BlockBehaviour.Properties.ofLegacyCopy(CUT_SOUL_SANDSTONE.get()));
+
     // 石英沙子
     public static final DeferredBlock<SandBlock> QUARTZ_SAND = BLOCKS.registerBlock(
             "quartz_sand",
@@ -851,6 +888,18 @@ public class ModBlocks {
         ITEMS.registerSimpleBlockItem(SOUL_SANDSTONE);
         ITEMS.registerSimpleBlockItem(SMOOTH_QUARTZ_SANDSTONE);
         ITEMS.registerSimpleBlockItem(SMOOTH_SOUL_SANDSTONE);
+        ITEMS.registerSimpleBlockItem(QUARTZ_SANDSTONE_STAIRS);
+        ITEMS.registerSimpleBlockItem(QUARTZ_SANDSTONE_SLAB);
+        ITEMS.registerSimpleBlockItem(QUARTZ_SANDSTONE_WALL);
+        ITEMS.registerSimpleBlockItem(SMOOTH_QUARTZ_SANDSTONE_STAIRS);
+        ITEMS.registerSimpleBlockItem(SMOOTH_QUARTZ_SANDSTONE_SLAB);
+        ITEMS.registerSimpleBlockItem(CUT_QUARTZ_SANDSTONE_SLAB);
+        ITEMS.registerSimpleBlockItem(SOUL_SANDSTONE_STAIRS);
+        ITEMS.registerSimpleBlockItem(SOUL_SANDSTONE_SLAB);
+        ITEMS.registerSimpleBlockItem(SOUL_SANDSTONE_WALL);
+        ITEMS.registerSimpleBlockItem(SMOOTH_SOUL_SANDSTONE_STAIRS);
+        ITEMS.registerSimpleBlockItem(SMOOTH_SOUL_SANDSTONE_SLAB);
+        ITEMS.registerSimpleBlockItem(CUT_SOUL_SANDSTONE_SLAB);
         ITEMS.registerSimpleBlockItem(QUARTZ_SAND);
         ITEMS.registerSimpleBlockItem(QUARTZ_QUICKSAND);
         ITEMS.registerSimpleBlockItem(SOUL_QUICKSAND);

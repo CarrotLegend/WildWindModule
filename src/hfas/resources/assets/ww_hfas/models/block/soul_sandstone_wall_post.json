@@ -1,0 +1,8 @@
+{
+  "parent": "ww_hfas:block/sandstone_wall_post_template",
+  "textures": {
+    "bottom": "ww_hfas:block/soul_sandstone_bottom",
+    "side": "ww_hfas:block/soul_sandstone",
+    "top": "ww_hfas:block/soul_sandstone_top"
+  }
+}

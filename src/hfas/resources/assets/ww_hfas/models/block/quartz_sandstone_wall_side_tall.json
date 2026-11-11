@@ -1,0 +1,8 @@
+{
+  "parent": "ww_hfas:block/sandstone_wall_side_tall_template",
+  "textures": {
+    "bottom": "ww_hfas:block/quartz_sandstone_bottom",
+    "side": "ww_hfas:block/quartz_sandstone",
+    "top": "ww_hfas:block/quartz_sandstone_top"
+  }
+}

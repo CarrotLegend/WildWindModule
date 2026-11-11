@@ -72,6 +72,35 @@ public class ModBlockTagsProvider extends BlockTagsProvider {
                 ModBlocks.SMOOTH_QUARTZ_SANDSTONE.get(),
                 ModBlocks.SMOOTH_SOUL_SANDSTONE.get());
 
+        addToTag(BlockTags.MINEABLE_WITH_PICKAXE,
+                ModBlocks.QUARTZ_SANDSTONE_STAIRS.get(),
+                ModBlocks.QUARTZ_SANDSTONE_SLAB.get(),
+                ModBlocks.QUARTZ_SANDSTONE_WALL.get(),
+                ModBlocks.SMOOTH_QUARTZ_SANDSTONE_STAIRS.get(),
+                ModBlocks.SMOOTH_QUARTZ_SANDSTONE_SLAB.get(),
+                ModBlocks.CUT_QUARTZ_SANDSTONE_SLAB.get(),
+                ModBlocks.SOUL_SANDSTONE_STAIRS.get(),
+                ModBlocks.SOUL_SANDSTONE_SLAB.get(),
+                ModBlocks.SOUL_SANDSTONE_WALL.get(),
+                ModBlocks.SMOOTH_SOUL_SANDSTONE_STAIRS.get(),
+                ModBlocks.SMOOTH_SOUL_SANDSTONE_SLAB.get(),
+                ModBlocks.CUT_SOUL_SANDSTONE_SLAB.get());
+        addToTag(BlockItemTags.STAIRS.block(),
+                ModBlocks.QUARTZ_SANDSTONE_STAIRS.get(),
+                ModBlocks.SMOOTH_QUARTZ_SANDSTONE_STAIRS.get(),
+                ModBlocks.SOUL_SANDSTONE_STAIRS.get(),
+                ModBlocks.SMOOTH_SOUL_SANDSTONE_STAIRS.get());
+        addToTag(BlockItemTags.SLABS.block(),
+                ModBlocks.QUARTZ_SANDSTONE_SLAB.get(),
+                ModBlocks.SMOOTH_QUARTZ_SANDSTONE_SLAB.get(),
+                ModBlocks.CUT_QUARTZ_SANDSTONE_SLAB.get(),
+                ModBlocks.SOUL_SANDSTONE_SLAB.get(),
+                ModBlocks.SMOOTH_SOUL_SANDSTONE_SLAB.get(),
+                ModBlocks.CUT_SOUL_SANDSTONE_SLAB.get());
+        addToTag(BlockItemTags.WALLS.block(),
+                ModBlocks.QUARTZ_SANDSTONE_WALL.get(),
+                ModBlocks.SOUL_SANDSTONE_WALL.get());
+
         // 石英沙 / 流沙 / 可疑沙 - 沙子类
         addToTag(BlockTags.MINEABLE_WITH_SHOVEL,
                 ModBlocks.QUARTZ_SAND.get(),

@@ -66,6 +66,22 @@ public class ModItemTagsProvider extends ItemTagsProvider {
         addToTag(ItemTags.FISHES, ModItems.PIRANHA.get(), ModItems.COOKED_PIRANHA.get());
         // 熟鱼食物标签
         addToTag(Tags.Items.FOODS_COOKED_FISH, ModItems.COOKED_PIRANHA.get());
+
+        addToTag(BlockItemTags.STAIRS.item(),
+                ModBlocks.QUARTZ_SANDSTONE_STAIRS.get(),
+                ModBlocks.SMOOTH_QUARTZ_SANDSTONE_STAIRS.get(),
+                ModBlocks.SOUL_SANDSTONE_STAIRS.get(),
+                ModBlocks.SMOOTH_SOUL_SANDSTONE_STAIRS.get());
+        addToTag(BlockItemTags.SLABS.item(),
+                ModBlocks.QUARTZ_SANDSTONE_SLAB.get(),
+                ModBlocks.SMOOTH_QUARTZ_SANDSTONE_SLAB.get(),
+                ModBlocks.CUT_QUARTZ_SANDSTONE_SLAB.get(),
+                ModBlocks.SOUL_SANDSTONE_SLAB.get(),
+                ModBlocks.SMOOTH_SOUL_SANDSTONE_SLAB.get(),
+                ModBlocks.CUT_SOUL_SANDSTONE_SLAB.get());
+        addToTag(BlockItemTags.WALLS.item(),
+                ModBlocks.QUARTZ_SANDSTONE_WALL.get(),
+                ModBlocks.SOUL_SANDSTONE_WALL.get());
     }
 
     /**
