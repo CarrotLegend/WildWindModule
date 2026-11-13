@@ -5,6 +5,7 @@ import net.neoforged.bus.api.IEventBus;
 import net.neoforged.fml.common.Mod;
 import org.polaris2023.wildwind.barren.block.BarrenBlocks;
 import org.polaris2023.wildwind.barren.registry.ModCreativeTabs;
+import org.polaris2023.wildwind.barren.registry.ModItems;
 
 /**
  * 原野之风：瘠土更新（Wild Wind: Barren Update）
